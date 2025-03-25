@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk-21">
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-21">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
@@ -16,6 +16,46 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="E:/Users/pisto/Downloads/fontawesomefx-8.9.jar"/>
+	<classpathentry kind="lib" path="C:/Users/vampiXbichichi/Desktop/javafx-sdk-21.0.6/lib/javafx.base.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/vampiXbichichi/Desktop/javafx-sdk-21.0.6/lib/javafx.controls.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/vampiXbichichi/Desktop/javafx-sdk-21.0.6/lib/javafx.fxml.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/vampiXbichichi/Desktop/javafx-sdk-21.0.6/lib/javafx.graphics.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/vampiXbichichi/Desktop/javafx-sdk-21.0.6/lib/javafx.media.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/vampiXbichichi/Desktop/javafx-sdk-21.0.6/lib/javafx.swing.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/vampiXbichichi/Desktop/javafx-sdk-21.0.6/lib/javafx.web.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/vampiXbichichi/Desktop/javafx-sdk-21.0.6/lib/javafx-swt.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/vampiXbichichi/Desktop/fontawesomefx-8.9.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
