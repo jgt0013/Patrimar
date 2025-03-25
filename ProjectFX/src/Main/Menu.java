@@ -16,7 +16,8 @@ public class Menu extends Application {
             primaryStage.setScene(scene);
             primaryStage.setTitle("Mi Aplicación");
             primaryStage.show();
-            primaryStage.setResizable(false);
+            //primaryStage.setResizable(false);
+            scene.getStylesheets().add(getClass().getResource("/Styles/menu.css").toExternalForm());
         } catch (IOException e) {
             e.printStackTrace();
         }
