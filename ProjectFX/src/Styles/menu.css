@@ -1,57 +1,66 @@
-/* Fondo general */
+/* Estilos generales */
 .root {
-    -fx-background-color: linear-gradient(to bottom, #161a30, #3c3f58);
+    -fx-font-family: 'Segoe UI', Arial, sans-serif;
+
 }
 
-/* Estilo del encabezado */
-.label {
-    -fx-font-size: 32px;
-    -fx-font-weight: bold;
+/* Panel superior */
+.top-pane {
+    -fx-background-color: #000625;
+    -fx-padding: 20px;
+}
+
+.welcome-label {
     -fx-text-fill: white;
+    -fx-font-size: 48px;
+    -fx-font-weight: bold;
+}
+
+/* Panel principal */
+.main-pane {
+    -fx-background-color: #f5f5f5;
+    -fx-padding: 20px;
+    -fx-background-color: #1E1E2E;
 }
 
 /* Botones principales */
-.button {
-    -fx-background-color: #6254f3;
+.main-button {
+    -fx-background-color: #000625;
     -fx-text-fill: white;
-    -fx-font-size: 16px;
-    -fx-padding: 10px 20px;
-    -fx-background-radius: 20px;
-    -fx-border-radius: 20px;
-    -fx-border-width: 0;
-    -fx-border-color: transparent;
-    -fx-alignment: center-left;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-pref-width: 252px;
+    -fx-pref-height: 58px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0, 0, 1);
 }
 
-/* Hover en botones */
-.button:hover {
-    -fx-background-color: #8177ff;
+.main-button:hover {
+    -fx-background-color: #1a1a3a;
     -fx-cursor: hand;
 }
 
-/* VBox desplegable */
-.vbox {
-    -fx-background-color: transparent; /* Hace que la caja del VBox sea transparente */
-    -fx-spacing: 5;
+/* Submenús */
+.submenu-vbox {
+    -fx-padding: 10px 0 0 20px;
+    -fx-border-color: #d3d3d3;
+    -fx-border-width: 0 0 0 2px;
 }
 
-/* Botones dentro del VBox */
-.vbox .button {
+.submenu-button {
     -fx-background-color: transparent;
-    -fx-text-fill: white;
-    -fx-font-size: 14px;
-    -fx-padding: 5px;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 16px;
     -fx-alignment: center-left;
+    -fx-padding: 5px 10px;
+    -fx-pref-width: 230px;
 }
 
-/* Hover en botones del VBox */
-.vbox .button:hover {
-    -fx-background-color: rgba(255, 255, 255, 0.2);
-}
-
-/* Botón de opciones "Otros" */
-#btnOtros {
-    -fx-background-color: #6254f3;
-    -fx-padding: 10px;
-    -fx-background-radius: 20px;
+.submenu-button:hover {
+    -fx-text-fill: #000625;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-background-color: #e6e6e6;
+    -fx-background-radius: 3px;
 }

@@ -13,6 +13,7 @@ public class Menu extends Application {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/Vistas/MainFXML.fxml")); // Carga el FXML
             Scene scene = new Scene(root, 1280, 720);
+            scene.getStylesheets().add(getClass().getResource("/Styles/menu.css").toExternalForm());
             primaryStage.setScene(scene);
             primaryStage.setTitle("Mi Aplicación");
             primaryStage.show();
@@ -27,3 +28,5 @@ public class Menu extends Application {
         launch(args);
     }
 }
+
+
