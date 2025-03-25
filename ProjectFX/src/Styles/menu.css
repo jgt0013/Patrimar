@@ -1,0 +1,57 @@
+/* Fondo general */
+.root {
+    -fx-background-color: linear-gradient(to bottom, #161a30, #3c3f58);
+}
+
+/* Estilo del encabezado */
+.label {
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+/* Botones principales */
+.button {
+    -fx-background-color: #6254f3;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-padding: 10px 20px;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+    -fx-border-width: 0;
+    -fx-border-color: transparent;
+    -fx-alignment: center-left;
+}
+
+/* Hover en botones */
+.button:hover {
+    -fx-background-color: #8177ff;
+    -fx-cursor: hand;
+}
+
+/* VBox desplegable */
+.vbox {
+    -fx-background-color: transparent; /* Hace que la caja del VBox sea transparente */
+    -fx-spacing: 5;
+}
+
+/* Botones dentro del VBox */
+.vbox .button {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 5px;
+    -fx-alignment: center-left;
+}
+
+/* Hover en botones del VBox */
+.vbox .button:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Botón de opciones "Otros" */
+#btnOtros {
+    -fx-background-color: #6254f3;
+    -fx-padding: 10px;
+    -fx-background-radius: 20px;
+}
