@@ -11,11 +11,11 @@ public class Menu extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/Vistas/MainFXML.fxml")); // Carga el FXML
+            Parent root = FXMLLoader.load(getClass().getResource("/Vistas/MainFXML.fxml"));
             Scene scene = new Scene(root, 1280, 720);
             scene.getStylesheets().add(getClass().getResource("/Styles/menu.css").toExternalForm());
             primaryStage.setScene(scene);
-            primaryStage.setTitle("Mi Aplicación");
+            primaryStage.setTitle("APP CONT");
             primaryStage.show();
             //primaryStage.setResizable(false);
             scene.getStylesheets().add(getClass().getResource("/Styles/menu.css").toExternalForm());
