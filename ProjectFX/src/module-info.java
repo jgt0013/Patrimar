@@ -1,6 +1,8 @@
 module ProjectFX {
     requires javafx.controls;
     requires javafx.fxml;
+	requires javafx.graphics;
+	requires java.base;
 
     opens Main to javafx.graphics, javafx.fxml;
     opens Vistas to javafx.fxml;

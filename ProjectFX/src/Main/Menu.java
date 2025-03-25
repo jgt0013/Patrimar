@@ -17,7 +17,7 @@ public class Menu extends Application {
             primaryStage.setScene(scene);
             primaryStage.setTitle("APP CONT");
             primaryStage.show();
-            //primaryStage.setResizable(false);
+            primaryStage.setMaximized(true);
             scene.getStylesheets().add(getClass().getResource("/Styles/menu.css").toExternalForm());
         } catch (IOException e) {
             e.printStackTrace();
