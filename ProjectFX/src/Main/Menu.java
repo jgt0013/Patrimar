@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import java.io.IOException;
 
 public class Menu extends Application {
     @Override
@@ -14,13 +13,18 @@ public class Menu extends Application {
             Parent root = FXMLLoader.load(getClass().getResource("/Vistas/MainFXML.fxml"));
             Scene scene = new Scene(root, 1280, 720);
             scene.getStylesheets().add(getClass().getResource("/Styles/menu.css").toExternalForm());
+            
             primaryStage.setScene(scene);
             primaryStage.setTitle("APP CONT");
-            primaryStage.show();
+            primaryStage.setMinWidth(1280);
+            primaryStage.setMinHeight(720);
+            primaryStage.centerOnScreen();
             primaryStage.setMaximized(true);
-            scene.getStylesheets().add(getClass().getResource("/Styles/menu.css").toExternalForm());
-        } catch (IOException e) {
+            primaryStage.show();
+            
+        } catch (Exception e) {
             e.printStackTrace();
+            System.err.println("Error al cargar la interfaz: " + e.getMessage());
         }
     }
 
@@ -28,5 +32,3 @@ public class Menu extends Application {
         launch(args);
     }
 }
-
-
