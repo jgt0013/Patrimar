@@ -1,0 +1,109 @@
+/* Estilos generales */
+.root {
+    -fx-font-family: 'Segoe UI', Arial, sans-serif;
+    -fx-background-color: #1E1E2E;
+}
+
+/* Panel superior */
+.top-pane {
+    -fx-background-color: #000625;
+    -fx-padding: 20px;
+}
+
+.welcome-label {
+    -fx-text-fill: white;
+    -fx-font-size: 48px;
+    -fx-font-weight: bold;
+}
+
+/* Tabla de clientes */
+#TableClientes {
+    -fx-background-color: #2D2D2D;
+    -fx-border-color: #444444;
+    -fx-border-radius: 5px;
+}
+
+#TableClientes .column-header-background {
+    -fx-background-color: #000625;
+}
+
+#TableClientes .column-header {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+/* TextField de búsqueda */
+#TFListarClientes {
+    -fx-background-color: #3A3A4A; 
+    -fx-text-fill: white;
+    -fx-font-size: 24px;
+    -fx-border-color: #000625;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 0 10px;
+}
+
+#TFListarClientes:focused {
+    -fx-border-color: #4A90E2;
+}
+
+/* Botones principales */
+.main-button, #btnEliminar, #btnModificar, #btnAdd {
+    -fx-background-color: #000625;
+    -fx-text-fill: white;
+    -fx-font-size: 36px;
+    -fx-font-weight: bold;
+    -fx-pref-width: 250px;
+    -fx-pref-height: 54px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0, 0, 1);
+    -fx-margin: 10px;
+}
+
+.main-button:hover, #btnEliminar:hover, #btnModificar:hover, #btnAdd:hover {
+    -fx-background-color: #1a1a3a;
+    -fx-cursor: hand;
+}
+
+/* Estilos para Labels */
+.label {
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;    
+    -fx-wrap-text: true;
+    -fx-max-width: 200px; /* Ajusta según necesidad */
+	-fx-pref-width: 400px;
+}
+
+/* Estilos para los TextField */
+.text-field {
+    -fx-background-color: #3A3A4A; 
+    -fx-text-fill: white;
+    -fx-font-size: 20px;
+    -fx-border-color: #000625;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 5px 10px;
+    -fx-pref-width: -1;
+    -fx-text-overrun: clip; /* Evita que el texto sea truncado */  
+}
+
+.text-field:focused {
+    -fx-border-color: #4A90E2;
+    -fx-effect: dropshadow(gaussian, rgba(74,144,226,0.5), 5, 0, 0, 1);
+}
+
+/* Alinear labels y textfields */
+.hbox {
+    -fx-spacing: 15px;
+    -fx-alignment: center-left;
+}
+
+/* Ajustes en VBox */
+.vbox {
+    -fx-spacing: 20px;
+    -fx-padding: 20px;
+}

@@ -1,8 +1,14 @@
 package Controller;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+
+import java.io.IOException;
+
 import javafx.event.ActionEvent;
 
 public class Controller {
@@ -47,4 +53,23 @@ public class Controller {
                 break;
         }
     }
+    
+    @FXML
+    private void abrirListarClientes(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/ListClienteFXML.fxml"));
+            Scene scene = new Scene(loader.load(), 1920, 1080);
+            
+            Stage stage = new Stage();
+            stage.setTitle("Gestión de Clientes");
+            stage.setScene(scene);
+            stage.show();
+            stage.setMaximized(true);
+            
+            scene.getStylesheets().add(getClass().getResource("/Styles/ListClientes.css").toExternalForm());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

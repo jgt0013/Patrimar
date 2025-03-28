@@ -81,7 +81,7 @@
                            <Button text="Nuevo Cliente" styleClass="submenu-button"/>
                            <Button text="Modificar Cliente" styleClass="submenu-button"/>
                            <Button text="Borrar Cliente" styleClass="submenu-button"/>
-                           <Button text="Listar Clientes" styleClass="submenu-button"/>
+                           <Button text="Listar Clientes" styleClass="submenu-button" onAction="#abrirListarClientes"/>
                         </VBox>
                      </VBox>
 
