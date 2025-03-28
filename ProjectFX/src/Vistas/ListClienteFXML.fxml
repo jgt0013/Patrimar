@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ListClientesController">
+<VBox VBox.vgrow="ALWAYS" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ListClientesController">
    <children>
       <BorderPane prefHeight="1080.0" prefWidth="1920.0" VBox.vgrow="ALWAYS">
          <top>
@@ -25,18 +25,18 @@
          <center>
             <AnchorPane>
                <children>
-                  <GridPane hgap="10" layoutX="68.0" layoutY="77.0" prefHeight="156.0" prefWidth="1792.0" vgap="10">
+                  <GridPane hgap="10" layoutX="68.0" layoutY="77.0" prefHeight="156.0" prefWidth="1792.0" vgap="10" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20" AnchorPane.topAnchor="20">
                      <columnConstraints>
-                        <ColumnConstraints hgrow="ALWAYS" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="ALWAYS" prefWidth="250.0" />
-                        <ColumnConstraints hgrow="ALWAYS" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="ALWAYS" prefWidth="250.0" />
-                        <ColumnConstraints hgrow="ALWAYS" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="ALWAYS" prefWidth="250.0" />
-                        <ColumnConstraints hgrow="ALWAYS" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="ALWAYS" prefWidth="250.0" />
+                        <ColumnConstraints />
+                        <ColumnConstraints />
+                        <ColumnConstraints />
+                        <ColumnConstraints />
+                        <ColumnConstraints />
+                        <ColumnConstraints />
+                        <ColumnConstraints />
+                        <ColumnConstraints />
                      </columnConstraints>
-                     <children>                     
+                     <children>
                      	<Label prefHeight="17.0" prefWidth="88.0" text="ID:" />
                         <TextField fx:id="TFID" GridPane.columnIndex="1" />
                         
@@ -75,7 +75,6 @@
                         <TextField fx:id="TFBanco" GridPane.columnIndex="7" GridPane.rowIndex="3" />
                         <Label prefWidth="100.0" text="Observaciones:" GridPane.columnIndex="6" GridPane.rowIndex="4" />
                         <TextField fx:id="TFObservaciones" GridPane.columnIndex="7" GridPane.rowIndex="4" />
-                        
                      </children>
                      <rowConstraints>
                         <RowConstraints />
@@ -96,16 +95,21 @@
                      </rowConstraints>
                   </GridPane>
 
-                  <TableView fx:id="TableClientes" layoutX="59.0" layoutY="337.0" prefHeight="520.0" prefWidth="1399.0">
+                  <TableView fx:id="TableClientes" layoutX="59.0" layoutY="282.0" prefHeight="585.0" prefWidth="1417.0" AnchorPane.bottomAnchor="100" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="483.0" AnchorPane.topAnchor="282.0">
                      <columns>
                         <TableColumn prefWidth="75.0" text="C1" />
                         <TableColumn prefWidth="75.0" text="C2" />
                      </columns>
                   </TableView>
 
-                  <Button fx:id="btnModificar" layoutX="1545.0" layoutY="501.0" text="Modificar" />
-                  <Button fx:id="btnAdd" layoutX="1545.0" layoutY="402.0" text="Añadir" />
-                  <Button fx:id="btnEliminar" layoutX="1545.0" layoutY="602.0" text="Eliminar" />
+                  <!-- Segundo GridPane de botones -->
+                  <GridPane layoutX="1579.0" layoutY="402.0" prefHeight="256.0" prefWidth="267.0" AnchorPane.rightAnchor="20" AnchorPane.bottomAnchor="100" vgap ="15">
+                     <children>
+                        <Button fx:id="btnAdd" text="Añadir" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+                        <Button fx:id="btnEliminar" text="Eliminar" GridPane.rowIndex="1" GridPane.columnIndex="0" />
+                        <Button fx:id="btnModificar" text="Modificar" GridPane.rowIndex="2" GridPane.columnIndex="0" />
+                     </children>
+                  </GridPane>
                </children>
             </AnchorPane>
          </center>
