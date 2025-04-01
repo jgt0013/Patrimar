@@ -3,8 +3,10 @@ module ProjectFX {
     requires javafx.fxml;
 	requires javafx.graphics;
 	requires java.base;
+	requires java.sql;
 
     opens Main to javafx.graphics, javafx.fxml;
     opens Vistas to javafx.fxml;
-    opens Controller to javafx.fxml;  // Abrir el paquete Controller para javafx.fxml
+    opens Controller to javafx.fxml;
+    exports Controller;
 }

@@ -4,18 +4,15 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
 <BorderPane xmlns="http://javafx.com/javafx/21.0.1" 
             xmlns:fx="http://javafx.com/fxml/1" 
             fx:controller="Controller.LoginController"
-            stylesheets="@styles.css">
-   
+            stylesheets="@styles/login.css">  <!-- Ruta corregida al CSS -->
+
    <!-- Top: Barra superior -->
    <top>
       <AnchorPane styleClass="top-pane">
@@ -33,25 +30,20 @@
             <VBox alignment="CENTER" AnchorPane.topAnchor="50" AnchorPane.bottomAnchor="50" 
                   AnchorPane.leftAnchor="50" AnchorPane.rightAnchor="50" spacing="20">
                
-               <!-- Logo -->
-               <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
-                  <image>
-                     <Image url="@login-icon.png" />
-                  </image>
-               </ImageView>
-               
                <!-- Formulario de login -->
                <VBox spacing="10" styleClass="login-form" prefWidth="350">
                   <Label text="Usuario" styleClass="login-label"/>
-                  <TextField styleClass="login-field" promptText="Ingrese su usuario" prefWidth="350.0" prefHeight="40.0"/>
+                  <TextField fx:id="txtUsuario" styleClass="login-field" promptText="Ingrese su usuario" prefWidth="350.0" prefHeight="40.0"/>
                   
                   <Label text="Contraseña" styleClass="login-label"/>
-                  <PasswordField styleClass="login-field" promptText="Ingrese su contraseña" prefWidth="350.0" prefHeight="40.0"/>
+                  <PasswordField fx:id="txtPassword" styleClass="login-field" promptText="Ingrese su contraseña" prefWidth="350.0" prefHeight="40.0"/>
                   
-                  <Button fx:id="loginButton" text="Iniciar Sesión" styleClass="login-button" 
+                  <Button fx:id="loginButton" text="Iniciar Sesión" onAction="#iniciarSesion" styleClass="login-button" 
 				        prefWidth="350.0" prefHeight="45.0" 
 				        maxWidth="Infinity"
-				        alignment="CENTER"/> 
+				        alignment="CENTER"/>
+				  <Label fx:id="lblMensaje" text="" styleClass="error-message"/>
+				        
                </VBox>
                
                <!-- Enlace olvidé contraseña -->

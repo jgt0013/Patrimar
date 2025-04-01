@@ -13,7 +13,7 @@ public class Login extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            // Cargar el FXML
+            // Cargar el FXML de la ventana de login
             Parent root = FXMLLoader.load(getClass().getResource("/Vistas/LoginFXML.fxml"));
             
             // Obtener dimensiones de la pantalla
@@ -28,18 +28,56 @@ public class Login extends Application {
             // Configurar stage
             primaryStage.setScene(scene);
             primaryStage.setTitle("LOGIN");
-            primaryStage.setMaximized(true);
-            // Centrar ventana
+            primaryStage.setMaximized(true); // Maximiza la ventana de login
             primaryStage.centerOnScreen();
             
-            // Mostrar maximizado (opcional, descomenta si lo prefieres)
-            // primaryStage.setMaximized(true);
-            
+            // Mostrar la ventana de login
             primaryStage.show();
             
         } catch (IOException e) {
             e.printStackTrace();
             System.err.println("Error al cargar la interfaz: " + e.getMessage());
+        }
+    }
+
+    // Método que se llama para abrir la nueva ventana tras el login
+    public void abrirMenu(Stage primaryStage) {
+        try {
+            // Cargar el FXML de la nueva ventana
+            Parent rootMenu = FXMLLoader.load(getClass().getResource("/Vistas/MenuFXML.fxml"));
+            
+            // Crear la nueva escena
+            Scene sceneMenu = new Scene(rootMenu);
+            
+            // Crear el nuevo Stage
+            Stage menuStage = new Stage();
+            
+            // Cargar CSS
+            sceneMenu.getStylesheets().add(getClass().getResource("/Styles/menu.css").toExternalForm());
+            
+            // Configurar el stage de la nueva ventana
+            menuStage.setScene(sceneMenu);
+            menuStage.setTitle("MENU");
+            
+            // Configuración para ventana maximizada
+            menuStage.setMaximized(true);
+            
+            // Obtener dimensiones de pantalla
+            Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+            menuStage.setX(screenBounds.getMinX());
+            menuStage.setY(screenBounds.getMinY());
+            menuStage.setWidth(screenBounds.getWidth());
+            menuStage.setHeight(screenBounds.getHeight());
+            
+            // Mostrar la nueva ventana
+            menuStage.show();
+            
+            // Cerrar la ventana de login
+            primaryStage.close();
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.err.println("Error al abrir el menú: " + e.getMessage());
         }
     }
 
