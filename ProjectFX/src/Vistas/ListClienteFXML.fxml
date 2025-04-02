@@ -105,7 +105,7 @@
                   <!-- Segundo GridPane de botones -->
                   <GridPane layoutX="1579.0" layoutY="402.0" prefHeight="167.0" prefWidth="271.0" vgap="10" AnchorPane.bottomAnchor="189.0" AnchorPane.rightAnchor="16.0">
                      <children>
-                        <Button fx:id="btnEliminar" text="Eliminar" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                        <Button fx:id="btnEliminar" text="Eliminar" GridPane.columnIndex="0" GridPane.rowIndex="1" onAction="#eliminarCliente"/>
                         <Button fx:id="btnImprimir" text="Imprimir" GridPane.columnIndex="0" GridPane.rowIndex="2" />
                      </children>
                      <columnConstraints>

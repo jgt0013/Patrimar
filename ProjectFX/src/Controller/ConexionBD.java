@@ -106,6 +106,30 @@ public class ConexionBD {
 
         return clientes;
     }
+    
+    public boolean deleteCliente(int idCliente) {
+        String query = "DELETE FROM Cliente WHERE id = ?";
+
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement(query)) {
+             
+            ps.setInt(1, idCliente);
+            int filasAfectadas = ps.executeUpdate();
+
+            if (filasAfectadas > 0) {
+                showAlert("Éxito", "Cliente eliminado correctamente.", Alert.AlertType.INFORMATION);
+                return true;
+            } else {
+                showAlert("Error", "No se pudo eliminar el cliente.", Alert.AlertType.ERROR);
+                return false;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            showAlert("Error", "Error en la base de datos: " + e.getMessage(), Alert.AlertType.ERROR);
+            return false;
+        }
+    }
+
 
     // Método para mostrar una alerta en JavaFX
     private void showAlert(String title, String message, AlertType alertType) {

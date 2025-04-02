@@ -3,6 +3,7 @@ package Controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -38,6 +39,9 @@ public class ListClientesController {
 
     private ObservableList<Cliente> clientesList;
     private ObservableList<Cliente> clientesFiltrados;
+    
+    @FXML
+    private javafx.scene.control.Button btnEliminar;
 
     @FXML
     public void initialize() {
@@ -46,6 +50,8 @@ public class ListClientesController {
         cargarDatos();
         configurarTabla();
         agregarFiltros();
+        btnEliminar.setOnAction(event -> eliminarCliente());
+
     }
 
     private void configurarTabla() {
@@ -90,4 +96,31 @@ public class ListClientesController {
 
         clientesFiltrados.setAll(clientesList.stream().filter(filtro).collect(Collectors.toList()));
     }
+    
+    @FXML
+    private void eliminarCliente() {
+        Cliente clienteSeleccionado = TableClientes.getSelectionModel().getSelectedItem();
+        
+        if (clienteSeleccionado != null) {
+            ConexionBD conexion = new ConexionBD();
+            boolean eliminado = conexion.deleteCliente(clienteSeleccionado.getId());
+
+            if (eliminado) {
+                clientesList.remove(clienteSeleccionado);
+                clientesFiltrados.remove(clienteSeleccionado);
+            }
+        } else {
+            mostrarAlerta("Error", "Selecciona un cliente para eliminar.", Alert.AlertType.WARNING);
+        }
+    }    
+    
+    private void mostrarAlerta(String titulo, String mensaje, Alert.AlertType tipo) {
+        Alert alert = new Alert(tipo);
+        alert.setTitle(titulo);
+        alert.setHeaderText(null);
+        alert.setContentText(mensaje);
+        alert.showAndWait();
+    }
+
+
 }
