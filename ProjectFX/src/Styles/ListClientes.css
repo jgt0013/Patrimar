@@ -49,7 +49,7 @@
 }
 
 /* Botones principales */
-.main-button, #btnEliminar, #btnModificar, #btnAdd {
+.main-button, #btnEliminar, #btnImprimir {
     -fx-background-color: #000625;
     -fx-text-fill: white;
     -fx-font-size: 36px;
@@ -62,7 +62,7 @@
     -fx-margin: 10px;
 }
 
-.main-button:hover, #btnEliminar:hover, #btnModificar:hover, #btnAdd:hover {
+.main-button:hover, #btnEliminar:hover, #btnImprimir:hover {
     -fx-background-color: #1a1a3a;
     -fx-cursor: hand;
 }
