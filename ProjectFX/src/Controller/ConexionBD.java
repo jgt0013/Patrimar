@@ -13,13 +13,16 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import Modelos.Cliente;
 
 public class ConexionBD {
     private static final String URL = "jdbc:mysql://localhost:3306/programa";
     private static final String USER = "root";
-    private static final String PASSWORD = "admin";
+    private static final String PASSWORD = "asd123";
 
     // Método conexión
     public static Connection getConnection() throws SQLException {
@@ -151,60 +154,49 @@ public class ConexionBD {
         } catch (NumberFormatException e) {
             showAlert("Error", "Por favor ingrese datos válidos.", Alert.AlertType.ERROR);
         }
-    }
-
-    private void showAlert1(String title, String message, Alert.AlertType alertType) {
-        Alert alert = new Alert(alertType);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
+        }
 
     
-    public ObservableList<Cliente> getAllClientes() {
-        ObservableList<Cliente> clientes = FXCollections.observableArrayList();
-        String query = "SELECT * FROM Cliente;";
-        
-        try (Connection connection = getConnection(); 
-             PreparedStatement ps = connection.prepareStatement(query);
-             ResultSet rs = ps.executeQuery()) {
-             
+    public List<Cliente> getAllClientes() {
+        List<Cliente> clientes = new ArrayList<>();
+        try (Connection conn = this.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery("SELECT * FROM clientes")) {
+
             while (rs.next()) {
-            	int id = rs.getInt("id");
-                String nombre = rs.getString("nombre");
-                String apellidos = rs.getString("apellidos");
-                String razon_social = rs.getString("razon_social");
-                String cif_dni = rs.getString("cif_dni");
-                String direccion = rs.getString("direccion");
-                String provincia = rs.getString("provincia");
-                int codigo_postal = rs.getInt("codigo_postal");
-                String persona_contacto1 = rs.getString("persona_contacto1");
-                int telefono1 = rs.getInt("telefono1");
-                String persona_contacto2 = rs.getString("persona_contacto2");
-                int telefono2 = rs.getInt("telefono2");
-                String persona_contacto3 = rs.getString("persona_contacto3");
-                int telefono3 = rs.getInt("telefono3");
-                String email = rs.getString("email");
-                String banco = rs.getString("banco");
-                String observaciones = rs.getString("observaciones");
-
-                Cliente cliente = new Cliente(id, nombre, apellidos, razon_social, cif_dni, direccion, provincia, 
-                        codigo_postal, persona_contacto1, telefono1, persona_contacto2, 
-                        telefono2, persona_contacto3, telefono3, email, banco, observaciones);
-
-                                              
+                Cliente cliente = new Cliente();
+                cliente.setId(rs.getInt("id_cliente"));
+                cliente.setNombre(rs.getString("nombre"));
+                cliente.setApellidos(rs.getString("apellidos"));
+                cliente.setRazonSocial(rs.getString("razon_social"));
+                cliente.setCifDni(rs.getString("cif_nif"));
+                cliente.setDireccion(rs.getString("direccion"));
+                cliente.setCodigoPostal(rs.getString("cp"));
+                cliente.setPoblacion(rs.getString("poblacion"));
+                cliente.setProvincia(rs.getString("provincia"));
+                cliente.setPersonaContacto1(rs.getString("persona_contacto_1"));
+                cliente.setTelefono1(rs.getString("telefono1"));
+                cliente.setPersonaContacto2(rs.getString("persona_contacto_2"));
+                cliente.setTelefono2(rs.getString("telefono2"));
+                cliente.setPersonaContacto3(rs.getString("persona_contacto_3"));
+                cliente.setTelefono3(rs.getString("telefono3"));
+                cliente.setEmail(rs.getString("email"));
+                cliente.setObservaciones(rs.getString("observaciones"));
+                cliente.setCuentaBancaria(rs.getString("cuenta_bancaria"));
+                cliente.setMetodoPago(rs.getString("metodo_pago"));
+                cliente.setPuedePedir(rs.getBoolean("puede_pedir"));
                 clientes.add(cliente);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return clientes;
     }
+
+
     
     public boolean deleteCliente(int idCliente) {
-        String query = "DELETE FROM Cliente WHERE id = ?";
+        String query = "DELETE FROM clientes WHERE id = ?";
 
         try (Connection connection = getConnection();
              PreparedStatement ps = connection.prepareStatement(query)) {

@@ -8,5 +8,6 @@ module ProjectFX {
     opens Main to javafx.graphics, javafx.fxml;
     opens Vistas to javafx.fxml;
     opens Controller to javafx.fxml;
+    opens Modelos to javafx.base;
     exports Controller;
 }

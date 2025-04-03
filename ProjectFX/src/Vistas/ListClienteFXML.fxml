@@ -51,9 +51,9 @@
 
                         <Label prefHeight="17.0" prefWidth="63.0" text="Dirección:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                         <TextField fx:id="TFDireccion" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                        <Label prefWidth="100.0" text="C. Postal:" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                        <Label prefWidth="100.0" text="Provincia:" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                         <TextField fx:id="TFCPostal" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                        <Label prefHeight="17.0" prefWidth="62.0" text="Provincia:" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <Label prefHeight="17.0" prefWidth="62.0" text="C. Postal:" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                         <TextField fx:id="TFProvincia" GridPane.columnIndex="3" GridPane.rowIndex="3" />
                         <Label prefWidth="100.0" text="P. Contacto 1:" GridPane.columnIndex="2" GridPane.rowIndex="4" />
                         <TextField fx:id="TFContacto1" GridPane.columnIndex="3" GridPane.rowIndex="4" />
@@ -97,9 +97,24 @@
 
                   <TableView fx:id="TableClientes" layoutX="59.0" layoutY="282.0" prefHeight="585.0" prefWidth="1417.0" AnchorPane.bottomAnchor="100" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="483.0" AnchorPane.topAnchor="282.0">
                      <columns>
-                        <TableColumn prefWidth="75.0" text="C1" />
-                        <TableColumn prefWidth="75.0" text="C2" />
-                     </columns>
+					        <TableColumn fx:id="colID" text="ID" prefWidth="75.0"/>
+					        <TableColumn fx:id="colNombre" text="Nombre" prefWidth="150.0"/>
+					        <TableColumn fx:id="colApellidos" text="Apellidos" prefWidth="150.0"/>
+					        <TableColumn fx:id="colRS" text="Razón Social" prefWidth="150.0"/>
+					        <TableColumn fx:id="colDNI" text="CIF/DNI" prefWidth="100.0"/>
+					        <TableColumn fx:id="colDireccion" text="Dirección" prefWidth="200.0"/>
+					        <TableColumn fx:id="colCPostal" text="C. Postal" prefWidth="100.0"/>
+					        <TableColumn fx:id="colProvincia" text="Provincia" prefWidth="120.0"/>
+					        <TableColumn fx:id="colContacto1" text="P. Contacto 1" prefWidth="150.0"/>
+					        <TableColumn fx:id="colTel1" text="Tel. 1" prefWidth="120.0"/>
+					        <TableColumn fx:id="colContacto2" text="P. Contacto 2" prefWidth="150.0"/>
+					        <TableColumn fx:id="colTel2" text="Tel. 2" prefWidth="120.0"/>
+					        <TableColumn fx:id="colContacto3" text="P. Contacto 3" prefWidth="150.0"/>
+					        <TableColumn fx:id="colTel3" text="Tel. 3" prefWidth="120.0"/>
+					        <TableColumn fx:id="colEmail" text="Email" prefWidth="200.0"/>
+					        <TableColumn fx:id="colBanco" text="Banco" prefWidth="120.0"/>
+					        <TableColumn fx:id="colObservaciones" text="Observaciones" prefWidth="250.0"/>
+					  </columns>
                   </TableView>
 
                   <!-- Segundo GridPane de botones -->
