@@ -1,0 +1,60 @@
+/* Estilos generales */
+.root {
+    -fx-font-family: 'Segoe UI', Arial, sans-serif;
+    -fx-background-color: #1E1E2E;
+}
+
+/* Panel superior */
+.top-pane {
+    -fx-background-color: #000625;
+    -fx-padding: 20px;
+}
+/* Panel principal */
+.main-pane {
+    -fx-background-color: #1E1E2E;
+}
+.text-field {
+    -fx-background-color: transparent; /* Quita el fondo */
+    -fx-border-color: transparent transparent #4A90E2 transparent; /* Solo borde inferior */
+    -fx-border-width: 0 0 2px 0; /* Solo la línea inferior */
+    -fx-text-fill: white;
+    -fx-font-size: 1.1em;
+    -fx-padding-bottom: 1px; /* Ajusta el valor según lo necesites */
+}
+.label.welcome-label { /* Más específico */
+    -fx-font-size: 2.5em;
+}
+.label {
+    -fx-text-fill: white;
+    -fx-font-size: 1.1em;
+    -fx-font-weight: bold;
+}
+.text-area {
+    -fx-background-color: #1E1E2E;
+    -fx-border-color: #4A90E2;
+    -fx-border-width: 2px; 
+    -fx-text-fill: white;
+    -fx-font-size: 1.1em;
+    -fx-padding-bottom: 1px; /* Ajusta el valor según lo necesites */
+}
+.text-area .content {
+    -fx-background-color: #1E1E2E; /* Aplica el fondo al área de texto interna */
+}
+.login-form {
+    -fx-padding: 20px;
+    -fx-background-color: #2A2A3A;
+    -fx-background-radius: 10px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 0);
+}
+.button{
+    -fx-background-color: #000625;
+    -fx-text-fill: white;
+    -fx-font-size: 1.1em;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: #1a1a3a;
+}

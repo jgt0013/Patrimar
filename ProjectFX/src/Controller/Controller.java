@@ -71,5 +71,22 @@ public class Controller {
             e.printStackTrace();
         }
     }
+    @FXML
+    private void abrirNuevoCliente(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/NuevoClienteFXML.fxml"));
+            Scene scene = new Scene(loader.load(), 1920, 1080);
+            
+            Stage stage = new Stage();
+            stage.setTitle("Nuevo Cliente");
+            stage.setScene(scene);
+            stage.show();
+            stage.setMaximized(true);
+            
+            scene.getStylesheets().add(getClass().getResource("/Styles/Nuevo.css").toExternalForm());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 }

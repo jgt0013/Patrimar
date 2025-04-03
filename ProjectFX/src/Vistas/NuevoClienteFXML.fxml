@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane stylesheets="@styles/Nuevo.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ConexionBD">  <!-- Ruta corregida al CSS -->
+   <top>
+      <AnchorPane styleClass="top-pane">
+         <children>
+            <Label layoutX="32.0" layoutY="29.0" styleClass="welcome-label" text="Nuevo Cliente">
+               <font>
+                  <Font size="48.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </top>
+   <center>
+      <AnchorPane prefHeight="967.0" prefWidth="1920.0" BorderPane.alignment="CENTER">
+      <children>
+            <Label fx:id="lblNombre" layoutX="35.0" layoutY="30.0" prefWidth="284.0" text="Nombre">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtNombre" layoutX="95.0" layoutY="51.0" prefHeight="15.0" prefWidth="315.0" text="">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </TextField>
+            <Label fx:id="lblApellidos" layoutX="35.0" layoutY="110.0" prefWidth="284.0" text="Apellidos">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtApellidos" layoutX="95.0" layoutY="131.0" prefHeight="15.0" prefWidth="315.0" text="">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </TextField>
+            <Label fx:id="lblRazonSocial" layoutX="35.0" layoutY="190.0" prefWidth="284.0" text="Razón social">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtRazonSocial" layoutX="95.0" layoutY="211.0" prefHeight="15.0" prefWidth="315.0" text="">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </TextField>
+            <Label fx:id="lblCIFNIF" layoutX="35.0" layoutY="270.0" prefWidth="284.0" text="CIF/NIF">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtCIFNIF" layoutX="95.0" layoutY="291.0" prefHeight="15.0" prefWidth="315.0" text="">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </TextField>
+            <Label fx:id="lblDireccion" layoutX="35.0" layoutY="350.0" prefWidth="284.0" text="Dirección">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtDireccion" layoutX="95.0" layoutY="371.0" prefHeight="15.0" prefWidth="315.0" text="">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </TextField>
+            <Label fx:id="lblCodigoPostal" layoutX="35.0" layoutY="430.0" prefWidth="284.0" text="Código postal">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtCodigoPostal" layoutX="95.0" layoutY="451.0" prefHeight="15.0" prefWidth="315.0" text="">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </TextField>
+            <Label fx:id="lblProvincia" layoutX="35.0" layoutY="510.0" prefWidth="284.0" text="Provincia">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtProvincia" layoutX="95.0" layoutY="531.0" prefHeight="15.0" prefWidth="315.0" text="">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </TextField>
+            <Label fx:id="lblPersonaContacto1" layoutX="435.0" layoutY="30.0" text="Persona Contacto 1">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtPersonaContacto1" layoutX="495.0" layoutY="51.0" prefHeight="15.0" prefWidth="315.0" text="">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </TextField>
+            <Label fx:id="lblTelefono1" layoutX="435.0" layoutY="110.0" prefWidth="284.0" text="Teléfono 1">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtTelefono1" layoutX="495.0" layoutY="131.0" prefHeight="15.0" prefWidth="315.0" text="">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </TextField>
+            <Label fx:id="lblPersonaContacto2" layoutX="435.0" layoutY="190.0" text="Persona Contacto 2">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtPersonaContacto2" layoutX="495.0" layoutY="211.0" prefHeight="15.0" prefWidth="315.0" text="">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </TextField>
+            <Label fx:id="lblTelefono2" layoutX="435.0" layoutY="270.0" prefWidth="284.0" text="Teléfono 2">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtTelefono2" layoutX="495.0" layoutY="291.0" prefHeight="15.0" prefWidth="315.0" text="">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </TextField>
+            <Label fx:id="lblPersonaContacto3" layoutX="435.0" layoutY="350.0" text="Persona Contacto 3">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtPersonaContacto3" layoutX="495.0" layoutY="371.0" prefHeight="15.0" prefWidth="315.0" text="">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </TextField>
+            <Label fx:id="lblTelefono3" layoutX="435.0" layoutY="430.0" prefWidth="284.0" text="Teléfono 3">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtTelefono3" layoutX="495.0" layoutY="451.0" prefHeight="15.0" prefWidth="315.0" text="">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </TextField>
+            <Label fx:id="lblEmail" layoutX="435.0" layoutY="510.0" prefWidth="284.0" text="Email">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtEmail" layoutX="495.0" layoutY="531.0" prefHeight="15.0" prefWidth="315.0" text="">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </TextField><Label fx:id="lblBanco" layoutX="835.0" layoutY="30.0" prefWidth="425.0" text="Cuenta Bancaria">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtBanco" layoutX="895.0" layoutY="51.0" prefHeight="15.0" prefWidth="315.0" text="">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </TextField>
+            <Label fx:id="lblObservaciones" layoutX="835.0" layoutY="110.0" prefWidth="425.0" text="Observaciones">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </Label>
+            <TextArea fx:id="tarObservaciones" layoutX="895.0" layoutY="158.0" prefHeight="163.0" prefWidth="315.0" text="">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </TextArea>
+            <Button layoutX="1078.0" layoutY="502.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="130.0" text="Cancelar" />
+            <Button layoutX="897.0" layoutY="502.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="130.0" text="Aceptar" onAction="#addTablaCliente" />
+  	  </children>
+  	  </AnchorPane>
+   </center>
+</BorderPane>

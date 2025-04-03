@@ -78,7 +78,7 @@
                      <VBox alignment="CENTER" spacing="10">
                         <Button fx:id="btnClientes" text="Clientes" styleClass="main-button" onAction="#toggleButtons"/>
                         <VBox fx:id="vboxClientes" spacing="5" visible="false" styleClass="submenu-vbox">
-                           <Button text="Nuevo Cliente" styleClass="submenu-button"/>
+                           <Button text="Nuevo Cliente" styleClass="submenu-button" onAction="#abrirNuevoCliente"/>
                            <Button text="Modificar Cliente" styleClass="submenu-button"/>
                            <Button text="Borrar Cliente" styleClass="submenu-button"/>
                            <Button text="Listar Clientes" styleClass="submenu-button" onAction="#abrirListarClientes"/>
