@@ -75,8 +75,8 @@ public class ConexionBD {
                 ps.setString(3, iRazonSocial);
                 ps.setString(4, iDNI_Cliente);
                 ps.setString(5, iDireccion);
-                ps.setString(6, iProvincia);
-                ps.setString(7, iCodigoPostal);
+                ps.setString(6, iCodigoPostal);
+                ps.setString(7, iProvincia);
                 ps.setString(8, iPersonaContacto1);
                 ps.setString(9, iTelefono1);
                 ps.setString(10, iPersonaContacto2);
@@ -91,7 +91,7 @@ public class ConexionBD {
             
             System.out.println("INSERT INTO Cliente VALUES: " +
                     iNombre + ", " + iApellidos + ", " + iRazonSocial + ", " + iDNI_Cliente + ", " +
-                    iDireccion + ", " + iProvincia + ", " + iCodigoPostal + ", " +
+                    iDireccion + ", " + iCodigoPostal + ", " + iProvincia + ", " +
                     iPersonaContacto1 + ", " + iTelefono1 + ", " + 
                     iPersonaContacto2 + ", " + iTelefono2 + ", " + 
                     iPersonaContacto3 + ", " + iTelefono3 + ", " + 
@@ -114,8 +114,8 @@ public class ConexionBD {
     
     
     @FXML
-    private TextField txtNombre, txtApellidos, txtRazonSocial, txtCIFNIF, txtDireccion, txtProvincia, 
-                      txtCodigoPostal, txtPersonaContacto1, txtTelefono1, txtPersonaContacto2, 
+    private TextField txtNombre, txtApellidos, txtRazonSocial, txtCIFNIF, txtDireccion, txtCodigoPostal, 
+    txtProvincia, txtPersonaContacto1, txtTelefono1, txtPersonaContacto2, 
                       txtTelefono2, txtPersonaContacto3, txtTelefono3, txtEmail, txtBanco;
     @FXML
     private TextArea tarObservaciones;
@@ -129,8 +129,8 @@ public class ConexionBD {
             String razonSocial = txtRazonSocial.getText();
             String dni = txtCIFNIF.getText();
             String direccion = txtDireccion.getText();
-            String provincia = txtProvincia.getText();
             String codigoPostal =txtCodigoPostal.getText();
+            String provincia = txtProvincia.getText();
             String personaContacto1 = txtPersonaContacto1.getText();
             String telefono1 = txtTelefono1.getText();
             String personaContacto2 = txtPersonaContacto2.getText();
