@@ -55,10 +55,15 @@ public class ListClientesController {
 	private TableColumn<Cliente, String> colBanco;
 	@FXML
 	private TableColumn<Cliente, String> colObservaciones;
+	@FXML
+	private TableColumn<Cliente, String> colMetodoPago;
+	@FXML
+	private TableColumn<Cliente, String> colPuedePedir;
 
 
     @FXML
-    private TextField TFID, TFNombre, TFApellidos, TFDNI, TFEmail, TFBanco, TFDireccion, TFProvincia, TFCPostal, TFContacto1, TFContacto2, TFContacto3, TFTel1, TFTel2, TFTel3, TFObservaciones;
+    private TextField TFID, TFNombre, TFApellidos, TFDNI, TFEmail, TFBanco, TFDireccion, TFProvincia, TFCPostal, TFContacto1, TFContacto2,
+    TFContacto3, TFTel1, TFTel2, TFTel3, TFObservaciones, TFMetodoPago, TFPuedePedir, TFRS;
 
     private ObservableList<Cliente> clientesList;
     private ObservableList<Cliente> clientesFiltrados;
@@ -93,8 +98,10 @@ public class ListClientesController {
         colContacto3.setCellValueFactory(new PropertyValueFactory<>("personaContacto3"));
         colTel3.setCellValueFactory(new PropertyValueFactory<>("telefono3"));
         colEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
-        colBanco.setCellValueFactory(new PropertyValueFactory<>("banco"));
+        colBanco.setCellValueFactory(new PropertyValueFactory<>("CuentaBancaria"));
         colObservaciones.setCellValueFactory(new PropertyValueFactory<>("observaciones"));
+        colMetodoPago.setCellValueFactory(new PropertyValueFactory<>("metodoPago"));
+        colPuedePedir.setCellValueFactory(new PropertyValueFactory<>("puedePedir"));
 
         TableClientes.setItems(clientesFiltrados);
         clientesFiltrados.setAll(clientesList);
@@ -112,6 +119,7 @@ public class ListClientesController {
         TFID.textProperty().addListener((obs, oldVal, newVal) -> filtrarDatos());
         TFNombre.textProperty().addListener((obs, oldVal, newVal) -> filtrarDatos());
         TFApellidos.textProperty().addListener((obs, oldVal, newVal) -> filtrarDatos());
+        TFRS.textProperty().addListener((obs, oldVal, newVal) -> filtrarDatos());
         TFDNI.textProperty().addListener((obs, oldVal, newVal) -> filtrarDatos());
         TFEmail.textProperty().addListener((obs, oldVal, newVal) -> filtrarDatos());
         TFBanco.textProperty().addListener((obs, oldVal, newVal) -> filtrarDatos());
@@ -125,34 +133,45 @@ public class ListClientesController {
         TFTel2.textProperty().addListener((obs, oldVal, newVal) -> filtrarDatos());
         TFTel3.textProperty().addListener((obs, oldVal, newVal) -> filtrarDatos());
         TFObservaciones.textProperty().addListener((obs, oldVal, newVal) -> filtrarDatos());
+        TFMetodoPago.textProperty().addListener((obs, oldVal, newVal) -> filtrarDatos());
+        TFPuedePedir.textProperty().addListener((obs, oldVal, newVal) -> filtrarDatos());
     }
 
 
     private void filtrarDatos() {
         Predicate<Cliente> filtro = cliente -> {
             boolean coincide = true;
-            if (!TFID.getText().isEmpty()) coincide &= String.valueOf(cliente.getId()).contains(TFID.getText());
-            if (!TFNombre.getText().isEmpty()) coincide &= cliente.getNombre().toLowerCase().contains(TFNombre.getText().toLowerCase());
-            if (!TFApellidos.getText().isEmpty()) coincide &= cliente.getApellidos().toLowerCase().contains(TFApellidos.getText().toLowerCase());
-            if (!TFDNI.getText().isEmpty()) coincide &= cliente.getCifDni().toLowerCase().contains(TFDNI.getText().toLowerCase());
-            if (!TFEmail.getText().isEmpty()) coincide &= cliente.getEmail().toLowerCase().contains(TFEmail.getText().toLowerCase());
-            if (!TFBanco.getText().isEmpty()) coincide &= cliente.getBanco().toLowerCase().contains(TFBanco.getText().toLowerCase());
-            if (!TFDireccion.getText().isEmpty()) coincide &= cliente.getDireccion().toLowerCase().contains(TFDireccion.getText().toLowerCase());
-            if (!TFProvincia.getText().isEmpty()) coincide &= cliente.getProvincia().toLowerCase().contains(TFProvincia.getText().toLowerCase());
-            if (!TFCPostal.getText().isEmpty()) coincide &= cliente.getCodigoPostal().toLowerCase().contains(TFCPostal.getText().toLowerCase());
-            if (!TFContacto1.getText().isEmpty()) coincide &= cliente.getPersonaContacto1().toLowerCase().contains(TFContacto1.getText().toLowerCase());
-            if (!TFContacto2.getText().isEmpty()) coincide &= cliente.getPersonaContacto2().toLowerCase().contains(TFContacto2.getText().toLowerCase());
-            if (!TFContacto3.getText().isEmpty()) coincide &= cliente.getPersonaContacto3().toLowerCase().contains(TFContacto3.getText().toLowerCase());
-            if (!TFTel1.getText().isEmpty()) coincide &= cliente.getTelefono1().toLowerCase().contains(TFTel1.getText().toLowerCase());
-            if (!TFTel2.getText().isEmpty()) coincide &= cliente.getTelefono2().toLowerCase().contains(TFTel2.getText().toLowerCase());
-            if (!TFTel3.getText().isEmpty()) coincide &= cliente.getTelefono3().toLowerCase().contains(TFTel3.getText().toLowerCase());
-            if (!TFObservaciones.getText().isEmpty()) coincide &= cliente.getObservaciones().toLowerCase().contains(TFObservaciones.getText().toLowerCase());
+
+            if (!TFID.getText().isBlank()) coincide &= String.valueOf(cliente.getId()).contains(TFID.getText().trim());
+            if (!TFNombre.getText().isBlank()) coincide &= cliente.getNombre().toLowerCase().contains(TFNombre.getText().trim().toLowerCase());
+            if (!TFApellidos.getText().isBlank()) coincide &= cliente.getApellidos().toLowerCase().contains(TFApellidos.getText().trim().toLowerCase());
+            if (!TFRS.getText().isBlank()) coincide &= cliente.getRazonSocial().toLowerCase().contains(TFRS.getText().trim().toLowerCase());
+            if (!TFDNI.getText().isBlank()) coincide &= cliente.getCifDni().toLowerCase().contains(TFDNI.getText().trim().toLowerCase());
+            if (!TFEmail.getText().isBlank()) coincide &= cliente.getEmail().toLowerCase().contains(TFEmail.getText().trim().toLowerCase());
+            if (!TFBanco.getText().isBlank()) coincide &= cliente.getCuentaBancaria().toLowerCase().contains(TFBanco.getText().trim().toLowerCase());
+            if (!TFDireccion.getText().isBlank()) coincide &= cliente.getDireccion().toLowerCase().contains(TFDireccion.getText().trim().toLowerCase());
+            if (!TFProvincia.getText().isBlank()) coincide &= cliente.getProvincia().toLowerCase().contains(TFProvincia.getText().trim().toLowerCase());
+            if (!TFCPostal.getText().isBlank()) coincide &= cliente.getCodigoPostal().toLowerCase().contains(TFCPostal.getText().trim().toLowerCase());
+            if (!TFContacto1.getText().isBlank()) coincide &= cliente.getPersonaContacto1().toLowerCase().contains(TFContacto1.getText().trim().toLowerCase());
+            if (!TFContacto2.getText().isBlank()) coincide &= cliente.getPersonaContacto2().toLowerCase().contains(TFContacto2.getText().trim().toLowerCase());
+            if (!TFContacto3.getText().isBlank()) coincide &= cliente.getPersonaContacto3().toLowerCase().contains(TFContacto3.getText().trim().toLowerCase());
+            if (!TFTel1.getText().isBlank()) coincide &= cliente.getTelefono1().contains(TFTel1.getText().trim());
+            if (!TFTel2.getText().isBlank()) coincide &= cliente.getTelefono2().contains(TFTel2.getText().trim());
+            if (!TFTel3.getText().isBlank()) coincide &= cliente.getTelefono3().contains(TFTel3.getText().trim());
+            if (!TFObservaciones.getText().isBlank()) coincide &= cliente.getObservaciones().toLowerCase().contains(TFObservaciones.getText().trim().toLowerCase());
+            if (!TFMetodoPago.getText().isBlank()) coincide &= cliente.getMetodoPago().toLowerCase().contains(TFMetodoPago.getText().trim().toLowerCase());
+
+            if (!TFPuedePedir.getText().isBlank()) {
+                boolean filtroPuedePedir = TFPuedePedir.getText().trim().equalsIgnoreCase("true");
+                coincide &= (cliente.getPuedePedir() == filtroPuedePedir);
+            }
 
             return coincide;
         };
 
-        clientesFiltrados.setAll(clientesList.stream().filter(filtro).collect(Collectors.toList()));
+        clientesFiltrados.setAll(clientesList.stream().filter(filtro).toList());
     }
+
     
     @FXML
     private void eliminarCliente() {
@@ -171,6 +190,8 @@ public class ListClientesController {
 
                     if (eliminado) {
                         clientesList.remove(clienteSeleccionado);
+                        clientesFiltrados.setAll(clientesList); // 🔄 Asegurar que la tabla refleje el cambio
+                        TableClientes.refresh(); // Forzar refresco de la tabla
                     } else {
                         mostrarAlerta("Error", "No se pudo eliminar el cliente de la base de datos.", Alert.AlertType.ERROR);
                     }
@@ -179,6 +200,29 @@ public class ListClientesController {
         } else {
             mostrarAlerta("Error", "Selecciona un cliente para eliminar.", Alert.AlertType.WARNING);
         }
+    }
+    
+    @FXML
+    private void limpiarCampos() {
+        TFID.clear();
+        TFNombre.clear();
+        TFApellidos.clear();
+        TFDNI.clear();
+        TFEmail.clear();
+        TFBanco.clear();
+        TFDireccion.clear();
+        TFProvincia.clear();
+        TFCPostal.clear();
+        TFContacto1.clear();
+        TFContacto2.clear();
+        TFContacto3.clear();
+        TFTel1.clear();
+        TFTel2.clear();
+        TFTel3.clear();
+        TFObservaciones.clear();
+        TFMetodoPago.clear();
+        TFPuedePedir.clear();
+        TFRS.clear();
     }
   
     

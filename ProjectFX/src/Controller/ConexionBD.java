@@ -196,8 +196,8 @@ public class ConexionBD {
 
     
     public boolean deleteCliente(int idCliente) {
-        String query = "DELETE FROM clientes WHERE id = ?";
-
+        String query = "DELETE FROM clientes WHERE id_cliente = ?";
+        
         try (Connection connection = getConnection();
              PreparedStatement ps = connection.prepareStatement(query)) {
              

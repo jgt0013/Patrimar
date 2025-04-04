@@ -49,10 +49,10 @@
 }
 
 /* Botones principales */
-.main-button, #btnEliminar, #btnImprimir {
+.main-button, #btnEliminar, #btnImprimir, #btnLimpiar {
     -fx-background-color: #000625;
     -fx-text-fill: white;
-    -fx-font-size: 36px;
+    -fx-font-size: 28px;
     -fx-font-weight: bold;
     -fx-pref-width: 250px;
     -fx-pref-height: 54px;
@@ -62,7 +62,7 @@
     -fx-margin: 10px;
 }
 
-.main-button:hover, #btnEliminar:hover, #btnImprimir:hover {
+.main-button:hover, #btnEliminar:hover, #btnImprimir:hover, #btnLimpiar {
     -fx-background-color: #1a1a3a;
     -fx-cursor: hand;
 }

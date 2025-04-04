@@ -71,10 +71,14 @@
                         <TextField fx:id="TFTel3" GridPane.columnIndex="7" GridPane.rowIndex="1" />
                         <Label prefWidth="100.0" text="Email:" GridPane.columnIndex="6" GridPane.rowIndex="2" />
                         <TextField fx:id="TFEmail" GridPane.columnIndex="7" GridPane.rowIndex="2" />
-                        <Label prefHeight="17.0" prefWidth="44.0" text="Banco:" GridPane.columnIndex="6" GridPane.rowIndex="3" />
+                        <Label prefHeight="17.0" prefWidth="44.0" text="C. Bancaria:" GridPane.columnIndex="6" GridPane.rowIndex="3" />
                         <TextField fx:id="TFBanco" GridPane.columnIndex="7" GridPane.rowIndex="3" />
                         <Label prefWidth="100.0" text="Observaciones:" GridPane.columnIndex="6" GridPane.rowIndex="4" />
                         <TextField fx:id="TFObservaciones" GridPane.columnIndex="7" GridPane.rowIndex="4" />
+                        <TextField fx:id="TFMetodoPago" GridPane.columnIndex="5" />
+                        <TextField fx:id="TFPuedePedir" GridPane.columnIndex="7" />
+                        <Label text="Metodo Pago:" GridPane.columnIndex="4" />
+                        <Label text="Puede pedir:" GridPane.columnIndex="6" />
                      </children>
                      <rowConstraints>
                         <RowConstraints />
@@ -97,36 +101,40 @@
 
                   <TableView fx:id="TableClientes" layoutX="59.0" layoutY="282.0" prefHeight="585.0" prefWidth="1417.0" AnchorPane.bottomAnchor="100" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="483.0" AnchorPane.topAnchor="282.0">
                      <columns>
-					        <TableColumn fx:id="colID" text="ID" prefWidth="75.0"/>
-					        <TableColumn fx:id="colNombre" text="Nombre" prefWidth="150.0"/>
-					        <TableColumn fx:id="colApellidos" text="Apellidos" prefWidth="150.0"/>
-					        <TableColumn fx:id="colRS" text="Razón Social" prefWidth="150.0"/>
-					        <TableColumn fx:id="colDNI" text="CIF/DNI" prefWidth="100.0"/>
-					        <TableColumn fx:id="colDireccion" text="Dirección" prefWidth="200.0"/>
-					        <TableColumn fx:id="colCPostal" text="C. Postal" prefWidth="100.0"/>
-					        <TableColumn fx:id="colProvincia" text="Provincia" prefWidth="120.0"/>
-					        <TableColumn fx:id="colContacto1" text="P. Contacto 1" prefWidth="150.0"/>
-					        <TableColumn fx:id="colTel1" text="Tel. 1" prefWidth="120.0"/>
-					        <TableColumn fx:id="colContacto2" text="P. Contacto 2" prefWidth="150.0"/>
-					        <TableColumn fx:id="colTel2" text="Tel. 2" prefWidth="120.0"/>
-					        <TableColumn fx:id="colContacto3" text="P. Contacto 3" prefWidth="150.0"/>
-					        <TableColumn fx:id="colTel3" text="Tel. 3" prefWidth="120.0"/>
-					        <TableColumn fx:id="colEmail" text="Email" prefWidth="200.0"/>
-					        <TableColumn fx:id="colBanco" text="Banco" prefWidth="120.0"/>
-					        <TableColumn fx:id="colObservaciones" text="Observaciones" prefWidth="250.0"/>
+					        <TableColumn fx:id="colID" prefWidth="75.0" text="ID" />
+					        <TableColumn fx:id="colNombre" prefWidth="150.0" text="Nombre" />
+					        <TableColumn fx:id="colApellidos" prefWidth="150.0" text="Apellidos" />
+					        <TableColumn fx:id="colRS" prefWidth="150.0" text="Razón Social" />
+					        <TableColumn fx:id="colDNI" prefWidth="100.0" text="CIF/DNI" />
+					        <TableColumn fx:id="colDireccion" prefWidth="200.0" text="Dirección" />
+					        <TableColumn fx:id="colCPostal" prefWidth="100.0" text="C. Postal" />
+					        <TableColumn fx:id="colProvincia" prefWidth="120.0" text="Provincia" />
+					        <TableColumn fx:id="colContacto1" prefWidth="150.0" text="P. Contacto 1" />
+					        <TableColumn fx:id="colTel1" prefWidth="120.0" text="Tel. 1" />
+					        <TableColumn fx:id="colContacto2" prefWidth="150.0" text="P. Contacto 2" />
+					        <TableColumn fx:id="colTel2" prefWidth="120.0" text="Tel. 2" />
+					        <TableColumn fx:id="colContacto3" prefWidth="150.0" text="P. Contacto 3" />
+					        <TableColumn fx:id="colTel3" prefWidth="120.0" text="Tel. 3" />
+					        <TableColumn fx:id="colEmail" prefWidth="200.0" text="Email" />
+					        <TableColumn fx:id="colBanco" prefWidth="120.0" text="C. Bancaria" />
+					        <TableColumn fx:id="colObservaciones" prefWidth="250.0" text="Observaciones" />
+					        <TableColumn fx:id="colMetodoPago" prefWidth="250.0" text="Metodo Pago" />
+					        <TableColumn fx:id="colPuedePedir" prefWidth="250.0" text="Puede pedir" />
 					  </columns>
                   </TableView>
 
                   <!-- Segundo GridPane de botones -->
-                  <GridPane layoutX="1579.0" layoutY="402.0" prefHeight="167.0" prefWidth="271.0" vgap="10" AnchorPane.bottomAnchor="189.0" AnchorPane.rightAnchor="16.0">
+                  <GridPane layoutX="1579.0" layoutY="402.0" prefHeight="418.0" prefWidth="271.0" vgap="10" AnchorPane.bottomAnchor="189.0" AnchorPane.rightAnchor="16.0">
                      <children>
-                        <Button fx:id="btnEliminar" text="Eliminar" GridPane.columnIndex="0" GridPane.rowIndex="1" onAction="#eliminarCliente"/>
-                        <Button fx:id="btnImprimir" text="Imprimir" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                        <Button fx:id="btnEliminar" onAction="#eliminarCliente" text="Eliminar" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                        <Button fx:id="btnImprimir" text="Imprimir" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                        <Button fx:id="btnLimpiar" mnemonicParsing="false" text="Limpiar" GridPane.columnIndex="0" GridPane.rowIndex="0" onAction="#limpiarCampos" />
                      </children>
                      <columnConstraints>
                         <ColumnConstraints />
                      </columnConstraints>
                      <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" />
                         <RowConstraints />
                         <RowConstraints />
                         <RowConstraints />

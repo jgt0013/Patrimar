@@ -102,29 +102,25 @@ public class Cliente {
     public void setTelefono1(String telefono1) { this.telefono1.set(telefono1); }
     public StringProperty telefono1Property() { return telefono1; }
 
-    public String getPersonaContacto2() { return personaContacto2.get(); }
+    public String getPersonaContacto2() { return personaContacto2.get() != null ? personaContacto2.get() : ""; }
     public void setPersonaContacto2(String personaContacto2) { this.personaContacto2.set(personaContacto2); }
     public StringProperty personaContacto2Property() { return personaContacto2; }
 
-    public String getTelefono2() { return telefono2.get(); }
+    public String getTelefono2() { return telefono2.get() != null ? telefono2.get() : ""; }
     public void setTelefono2(String telefono2) { this.telefono2.set(telefono2); }
     public StringProperty telefono2Property() { return telefono2; }
 
-    public String getPersonaContacto3() { return personaContacto3.get(); }
+    public String getPersonaContacto3() { return personaContacto3.get() != null ? personaContacto3.get() : ""; }
     public void setPersonaContacto3(String personaContacto3) { this.personaContacto3.set(personaContacto3); }
     public StringProperty personaContacto3Property() { return personaContacto3; }
 
-    public String getTelefono3() { return telefono3.get(); }
+    public String getTelefono3() { return telefono3.get() != null ? telefono3.get() : ""; }
     public void setTelefono3(String telefono3) { this.telefono3.set(telefono3); }
     public StringProperty telefono3Property() { return telefono3; }
 
     public String getEmail() { return email.get(); }
     public void setEmail(String email) { this.email.set(email); }
     public StringProperty emailProperty() { return email; }
-
-    public String getBanco() { return banco.get(); }
-    public void setBanco(String banco) { this.banco.set(banco); }
-    public StringProperty bancoProperty() { return banco; }
 
     public String getObservaciones() { return observaciones.get(); }
     public void setObservaciones(String observaciones) { this.observaciones.set(observaciones); }
@@ -138,7 +134,7 @@ public class Cliente {
     public void setMetodoPago(String metodoPago) { this.metodoPago.set(metodoPago); }
     public StringProperty metodoPagoProperty() { return metodoPago; }
 
-    public boolean isPuedePedir() { return puedePedir.get(); }
+    public boolean getPuedePedir() { return puedePedir.get(); }
     public void setPuedePedir(boolean puedePedir) { this.puedePedir.set(puedePedir); }
     public BooleanProperty puedePedirProperty() { return puedePedir; }
 
