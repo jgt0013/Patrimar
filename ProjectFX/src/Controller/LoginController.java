@@ -52,6 +52,7 @@ public class LoginController {
         } catch (SQLException e) {
             e.printStackTrace();
             lblMensaje.setText("Error en la conexión.");
+            lblMensaje.setStyle("-fx-text-fill: red;");
         }
     }
 

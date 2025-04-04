@@ -22,7 +22,7 @@ import Modelos.Cliente;
 public class ConexionBD {
     private static final String URL = "jdbc:mysql://localhost:3306/programa";
     private static final String USER = "root";
-    private static final String PASSWORD = "asd123";
+    private static final String PASSWORD = "admin";
 
     // Método conexión
     public static Connection getConnection() throws SQLException {
