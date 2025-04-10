@@ -16,6 +16,22 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/vampiXbichichi/Desktop/javafx-sdk-21.0.6/lib/javafx-swt.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/vampiXbichichi/Desktop/fontawesomefx-8.9.jar"/>
+	<classpathentry kind="lib" path="C:/Users/vampiXbichichi/Desktop/mysql-connector-j-9.2.0.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Program Files/Java/jdk-23/lib/jrt-fs.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="lib" path="C:/Users/vampiXbichichi/Desktop/javafx-sdk-21.0.6/lib/javafx.base.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
@@ -47,17 +63,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/Users/vampiXbichichi/Desktop/javafx-sdk-21.0.6/lib/javafx.web.jar">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/vampiXbichichi/Desktop/javafx-sdk-21.0.6/lib/javafx-swt.jar">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/vampiXbichichi/Desktop/fontawesomefx-8.9.jar"/>
-	<classpathentry kind="lib" path="C:/Users/vampiXbichichi/Desktop/mysql-connector-j-9.2.0.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
