@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml" fx:controller="Controller.ListPedidosController">
+    <children>
+        <BorderPane prefHeight="1080.0" prefWidth="1920.0" VBox.vgrow="ALWAYS">
+            <top>
+                <AnchorPane prefHeight="113.0" styleClass="top-pane">
+                    <children>
+                        <Label layoutX="87.0" layoutY="45.0" styleClass="welcome-label" text="Consultar Pedidos" />
+                    </children>
+                </AnchorPane>
+            </top>
+            <center>
+                <AnchorPane>
+                    <children>
+                        <GridPane layoutX="68.0" layoutY="77.0" hgap="10" vgap="10" AnchorPane.leftAnchor="20" AnchorPane.topAnchor="20" AnchorPane.rightAnchor="20">
+                            <columnConstraints>
+                                <ColumnConstraints />
+                                <ColumnConstraints />
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints />
+                                <RowConstraints />
+                                <RowConstraints />
+                            </rowConstraints>
+                            <children>
+                                <Label text="Nº Pedido:" />
+                                <TextField fx:id="TFNPedido" GridPane.columnIndex="1" />
+
+                                <Label text="Fecha:" GridPane.rowIndex="1" />
+                                <TextField fx:id="TFFecha" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                                <Label text="ID Cliente:" GridPane.rowIndex="2" />
+                                <TextField fx:id="TFIDCliente" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                                <Label text="Razón Social:" GridPane.columnIndex="2" />
+                                <TextField fx:id="TFRazonSocial" GridPane.columnIndex="3" />
+
+                                <Label text="IVA:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                <TextField fx:id="TFIVA" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+
+                                <Label text="Nº Presupuesto:" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                <TextField fx:id="TFNPresupuesto" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                            </children>
+                        </GridPane>
+
+                        <TableView fx:id="TablePedidos" layoutX="59.0" layoutY="282.0" prefHeight="585.0" prefWidth="1417.0" AnchorPane.bottomAnchor="100" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="483.0" AnchorPane.topAnchor="282.0">
+                            <columns>
+                                <TableColumn fx:id="colNPedido" text="Nº Pedido" />
+                                <TableColumn fx:id="colFecha" text="Fecha" />
+                                <TableColumn fx:id="colIDCliente" text="ID Cliente" />
+                                <TableColumn fx:id="colRazonSocial" text="Razón Social" />
+                                <TableColumn fx:id="colIVA" text="IVA" />
+                                <TableColumn fx:id="colNPresupuesto" text="Nº Presupuesto" />
+                            </columns>
+                        </TableView>
+
+                        <VBox layoutX="1579.0" layoutY="402.0" spacing="10" AnchorPane.bottomAnchor="189.0" AnchorPane.rightAnchor="16.0">
+                            <children>
+                                <Button fx:id="btnLimpiar" text="Limpiar" onAction="#limpiarCampos" maxWidth="Infinity" />
+                                <Button fx:id="btnEliminar" text="Eliminar" onAction="#eliminarPedido" maxWidth="Infinity" />
+                                <Button fx:id="btnImprimir" text="Imprimir" maxWidth="Infinity" />
+                            </children>
+                        </VBox>
+                    </children>
+                </AnchorPane>
+            </center>
+        </BorderPane>
+    </children>
+</VBox>

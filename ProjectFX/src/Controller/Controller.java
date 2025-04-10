@@ -6,10 +6,9 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.event.ActionEvent;
 
 import java.io.IOException;
-
-import javafx.event.ActionEvent;
 
 public class Controller {
 
@@ -53,40 +52,90 @@ public class Controller {
                 break;
         }
     }
-    
+
     @FXML
     private void abrirListarClientes(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/ListClienteFXML.fxml"));
             Scene scene = new Scene(loader.load(), 1920, 1080);
-            
+
             Stage stage = new Stage();
             stage.setTitle("Gestión de Clientes");
             stage.setScene(scene);
             stage.show();
             stage.setMaximized(true);
-            
+
             scene.getStylesheets().add(getClass().getResource("/Styles/ListClientes.css").toExternalForm());
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
     @FXML
     private void abrirNuevoCliente(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/NuevoClienteFXML.fxml"));
             Scene scene = new Scene(loader.load(), 1920, 1080);
-            
+
             Stage stage = new Stage();
             stage.setTitle("Nuevo Cliente");
             stage.setScene(scene);
             stage.show();
             stage.setMaximized(true);
-            
+
             scene.getStylesheets().add(getClass().getResource("/Styles/Nuevo.css").toExternalForm());
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    private void abrirListarPedidos(ActionEvent event) {
+        try {
+            // Carga el archivo FXML correspondiente
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/ListPedidosFXML.fxml"));
+            
+            if (loader.getLocation() == null) {
+                throw new IOException("No se pudo encontrar el archivo FXML.");
+            }
+
+            // Crea una nueva escena con el archivo cargado
+            Scene scene = new Scene(loader.load(), 1920, 1080);
+            
+            // Crea una nueva ventana (Stage)
+            Stage stage = new Stage();
+            stage.setTitle("Gestión de Pedidos");
+            stage.setScene(scene);
+            stage.show();
+            stage.setMaximized(true); // Maximiza la ventana
+
+            // Asegúrate de que la ruta del CSS sea correcta
+            scene.getStylesheets().add(getClass().getResource("/Styles/ListPedidos.css").toExternalForm());
+
+        } catch (IOException e) {
+            // En caso de error, imprime el error en consola
+            e.printStackTrace();  
+            System.out.println("Error al cargar la vista: " + e.getMessage());
+        }
+    }
+    
+    @FXML
+    private void abrirListarPresupuestos(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/ListPresupuestosFXML.fxml"));
+            Scene scene = new Scene(loader.load(), 1920, 1080);
+
+            Stage stage = new Stage();
+            stage.setTitle("Gestión de Presupuestos");
+            stage.setScene(scene);
+            stage.show();
+            stage.setMaximized(true);
+
+            scene.getStylesheets().add(getClass().getResource("/Styles/ListPresupuestos.css").toExternalForm());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }

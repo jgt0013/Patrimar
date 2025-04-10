@@ -49,20 +49,21 @@
 }
 
 /* Botones principales */
-.main-button, #btnEliminar, #btnImprimir {
+#btnEliminar, #btnImprimir, #btnLimpiar {
     -fx-background-color: #000625;
     -fx-text-fill: white;
-    -fx-font-size: 36px;
+    -fx-font-size: 28px;
     -fx-font-weight: bold;
     -fx-pref-width: 250px;
     -fx-pref-height: 54px;
+    -fx-min-width: -1;
+    -fx-max-width: 1.7976931348623157E308;
     -fx-border-radius: 5px;
     -fx-background-radius: 5px;
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0, 0, 1);
-    -fx-margin: 10px;
 }
 
-.main-button:hover, #btnEliminar:hover, #btnImprimir:hover {
+#btnEliminar:hover, #btnImprimir:hover, #btnLimpiar:hover {
     -fx-background-color: #1a1a3a;
     -fx-cursor: hand;
 }
@@ -73,8 +74,8 @@
     -fx-font-size: 18px;
     -fx-font-weight: bold;    
     -fx-wrap-text: true;
-    -fx-max-width: 200px; /* Ajusta según necesidad */
-	-fx-pref-width: 400px;
+    -fx-max-width: 200px;
+    -fx-pref-width: 400px;
 }
 
 /* Estilos para los TextField */
@@ -88,22 +89,10 @@
     -fx-background-radius: 5px;
     -fx-padding: 5px 10px;
     -fx-pref-width: -1;
-    -fx-text-overrun: clip; /* Evita que el texto sea truncado */  
+    -fx-text-overrun: clip;
 }
 
 .text-field:focused {
     -fx-border-color: #4A90E2;
     -fx-effect: dropshadow(gaussian, rgba(74,144,226,0.5), 5, 0, 0, 1);
-}
-
-/* Alinear labels y textfields */
-.hbox {
-    -fx-spacing: 15px;
-    -fx-alignment: center-left;
-}
-
-/* Ajustes en VBox */
-.vbox {
-    -fx-spacing: 20px;
-    -fx-padding: 20px;
 }

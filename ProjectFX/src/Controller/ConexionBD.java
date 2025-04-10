@@ -18,6 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Modelos.Cliente;
+import Modelos.Pedido;
+import Modelos.Presupuesto;
 
 public class ConexionBD {
     private static final String URL = "jdbc:mysql://localhost:3306/programa";
@@ -217,6 +219,111 @@ public class ConexionBD {
             return false;
         }
     }
+    
+    public List<Presupuesto> getAllPresupuestos() {
+        List<Presupuesto> presupuestos = new ArrayList<>();
+
+        try (Connection conn = this.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery("SELECT * FROM presupuestos")) {
+
+            while (rs.next()) {
+                Presupuesto presupuesto = new Presupuesto();
+                presupuesto.setnPresupuesto(rs.getString("n_presupuesto"));
+                presupuesto.setFecha(rs.getString("fecha"));
+                presupuesto.setIdCliente(rs.getInt("id_cliente"));
+                presupuesto.setRazonSocial(rs.getString("razon_social"));
+                presupuesto.setIva(rs.getDouble("iva"));
+                presupuesto.setCompletado(rs.getBoolean("completado"));
+                presupuestos.add(presupuesto);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return presupuestos;
+    }
+
+    public boolean deletePresupuesto(String nPresupuesto) {
+        String query = "DELETE FROM presupuestos WHERE n_presupuesto = ?";
+
+        try (Connection conn = this.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(query)) {
+
+            pstmt.setString(1, nPresupuesto);
+            return pstmt.executeUpdate() > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean addPresupuesto(Presupuesto presupuesto) {
+        String query = "INSERT INTO presupuestos (n_presupuesto, fecha, id_cliente, razon_social, iva, completado) VALUES (?, ?, ?, ?, ?, ?)";
+
+        try (Connection conn = this.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(query)) {
+
+            pstmt.setString(1, presupuesto.getnPresupuesto());
+            pstmt.setString(2, presupuesto.getFecha());
+            pstmt.setInt(3, presupuesto.getIdCliente());
+            pstmt.setString(4, presupuesto.getRazonSocial());
+            pstmt.setDouble(5, presupuesto.getIva());
+            pstmt.setBoolean(6, presupuesto.isCompletado());
+            return pstmt.executeUpdate() > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
+    public List<Pedido> getAllPedidos() {
+        List<Pedido> pedidos = new ArrayList<>();
+        try (Connection conn = this.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery("SELECT * FROM pedidos")) {
+
+            while (rs.next()) {
+                Pedido pedido = new Pedido();
+                pedido.setNPedido(rs.getString("n_pedido"));       // PK
+                pedido.setFecha(rs.getString("fecha"));             // Puede ser String o convertir a java.sql.Date según convenga
+                pedido.setIdCliente(rs.getInt("id_cliente"));
+                pedido.setRazonSocial(rs.getString("razon_social"));
+                pedido.setIva(rs.getDouble("iva"));
+                pedido.setnPresupuesto(rs.getString("n_presupuesto"));
+                pedidos.add(pedido);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return pedidos;
+    }
+
+    public boolean deletePedido(String nPedido) {
+        String query = "DELETE FROM pedidos WHERE n_pedido = ?";
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement(query)) {
+             
+            ps.setString(1, nPedido);
+            int filasAfectadas = ps.executeUpdate();
+            
+            if (filasAfectadas > 0) {
+                showAlert("Éxito", "Pedido eliminado correctamente.", Alert.AlertType.INFORMATION);
+                return true;
+            } else {
+                showAlert("Error", "No se pudo eliminar el pedido.", Alert.AlertType.ERROR);
+                return false;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            showAlert("Error", "Error en la base de datos: " + e.getMessage(), Alert.AlertType.ERROR);
+            return false;
+        }
+    }
+
 
 
     // Método para mostrar una alerta en JavaFX

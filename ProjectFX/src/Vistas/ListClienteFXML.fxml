@@ -123,23 +123,14 @@
 					  </columns>
                   </TableView>
 
-                  <!-- Segundo GridPane de botones -->
-                  <GridPane layoutX="1579.0" layoutY="402.0" prefHeight="418.0" prefWidth="271.0" vgap="10" AnchorPane.bottomAnchor="189.0" AnchorPane.rightAnchor="16.0">
+                  <!-- Segundo GridPane de botones - Modificado para ser responsive -->
+                  <VBox layoutX="1579.0" layoutY="402.0" prefWidth="271.0" spacing="10" AnchorPane.bottomAnchor="189.0" AnchorPane.rightAnchor="16.0">
                      <children>
-                        <Button fx:id="btnEliminar" onAction="#eliminarCliente" text="Eliminar" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-                        <Button fx:id="btnImprimir" text="Imprimir" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-                        <Button fx:id="btnLimpiar" mnemonicParsing="false" text="Limpiar" GridPane.columnIndex="0" GridPane.rowIndex="0" onAction="#limpiarCampos" />
+                        <Button fx:id="btnLimpiar" mnemonicParsing="false" text="Limpiar" onAction="#limpiarCampos" maxWidth="1.7976931348623157E308" />
+                        <Button fx:id="btnEliminar" onAction="#eliminarCliente" text="Eliminar" maxWidth="1.7976931348623157E308" />
+                        <Button fx:id="btnImprimir" text="Imprimir" maxWidth="1.7976931348623157E308" />
                      </children>
-                     <columnConstraints>
-                        <ColumnConstraints />
-                     </columnConstraints>
-                     <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" />
-                        <RowConstraints />
-                        <RowConstraints />
-                        <RowConstraints />
-                     </rowConstraints>
-                  </GridPane>
+                  </VBox>
                </children>
             </AnchorPane>
          </center>

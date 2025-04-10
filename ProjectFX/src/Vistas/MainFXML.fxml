@@ -38,7 +38,7 @@
                            <Button text="Nuevo Presupuesto" styleClass="submenu-button"/>
                            <Button text="Modificar Presupuesto" styleClass="submenu-button"/>
                            <Button text="Borrar Presupuesto" styleClass="submenu-button"/>
-                           <Button text="Listar Presupuesto" styleClass="submenu-button"/>
+                           <Button text="Listar Presupuestos" styleClass="submenu-button" onAction="#abrirListarPresupuestos"/>
                         </VBox>
                      </VBox>
 
@@ -48,7 +48,7 @@
                            <Button text="Nuevo Pedido" styleClass="submenu-button"/>
                            <Button text="Modificar Pedido" styleClass="submenu-button"/>
                            <Button text="Borrar Pedido" styleClass="submenu-button"/>
-                           <Button text="Listar Pedidos" styleClass="submenu-button"/>
+                           <Button text="Listar Pedidos" styleClass="submenu-button" onAction="#abrirListarPedidos"/>
                         </VBox>
                      </VBox>
 
