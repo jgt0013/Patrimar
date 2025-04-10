@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox VBox.vgrow="ALWAYS" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.NewUserController">
+   <children>
+      <BorderPane prefHeight="1080.0" prefWidth="1920.0" VBox.vgrow="ALWAYS">
+         <top>
+            <AnchorPane prefHeight="113.0" styleClass="top-pane">
+               <children>
+                  <Label layoutX="87.0" layoutY="45.0" styleClass="welcome-label" text="Usuarios" />
+               </children>
+            </AnchorPane>
+         </top>
+         <bottom>
+            <AnchorPane BorderPane.alignment="CENTER">
+
+               <!-- Formulario principal -->
+               <GridPane hgap="10" layoutX="52.0" layoutY="108.0" prefHeight="236.0" prefWidth="600.0" vgap="30.0" AnchorPane.leftAnchor="52.0" AnchorPane.topAnchor="108.0">
+                  <columnConstraints>
+                     <ColumnConstraints maxWidth="161.0" minWidth="105.0" prefWidth="161.0" />
+                     <ColumnConstraints maxWidth="278.0" minWidth="139.0" prefWidth="278.0" />
+                     <ColumnConstraints maxWidth="195.0" minWidth="0.0" prefWidth="0.0" />
+                  </columnConstraints>
+                  <rowConstraints>
+                     <RowConstraints prefHeight="30.0" />
+                     <RowConstraints prefHeight="30.0" />
+                     <RowConstraints prefHeight="30.0" />
+                     <RowConstraints prefHeight="30.0" />
+                  </rowConstraints>
+                  <children>
+                     <Label text="Nombre:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                     <TextField fx:id="TFNombre" prefHeight="25.0" prefWidth="165.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                     <Label text="Contraseña:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                     <TextField fx:id="TFPassword" prefHeight="25.0" prefWidth="144.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                     <Label text="Usuario:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                     <TextField fx:id="TFUser" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                     <Label text="Permisos:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                  </children>
+               </GridPane>
+
+               <!-- VBox de botones en la esquina inferior derecha -->
+               <VBox prefHeight="345.0" prefWidth="271.0" spacing="70.0" AnchorPane.bottomAnchor="219.0" AnchorPane.rightAnchor="44.0">
+                  <children>
+                     <Button fx:id="btnAdd" mnemonicParsing="false" text="Añadir" />
+                     <Button fx:id="btnModificar" text="Modificar" />
+                     <Button fx:id="btnConsultar" text="Consultar" />
+                  </children>
+               </VBox>
+
+               <!-- Contenedor scrollable para permisos -->
+               <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="572.0" prefWidth="1294.0" AnchorPane.bottomAnchor="31.0" AnchorPane.leftAnchor="113.0" AnchorPane.rightAnchor="513.0" AnchorPane.topAnchor="364.0">
+                  <content>
+                     <VBox prefHeight="447.0" prefWidth="962.0" spacing="40.0">
+                        <!-- Primera fila de permisos -->
+                        <HBox alignment="TOP_LEFT" prefHeight="201.0" prefWidth="962.0" spacing="50.0">
+                           <!-- Presupuesto -->
+                           <VBox prefHeight="201.0" prefWidth="190.0" spacing="30.0">
+                              <CheckBox fx:id="chkPresupuesto" onAction="#toggleCheckboxes" styleClass="main-checkbox" text="Presupuesto" />
+                              <VBox fx:id="vboxPresupuesto" managed="false" spacing="5" styleClass="submenu-vbox" visible="false">
+                                 <CheckBox styleClass="submenu-checkbox" text="Nuevo Presupuesto" />
+                                 <CheckBox styleClass="submenu-checkbox" text="Modificar Presupuesto" />
+                                 <CheckBox styleClass="submenu-checkbox" text="Borrar Presupuesto" />
+                                 <CheckBox styleClass="submenu-checkbox" text="Listar Presupuesto" />
+                              </VBox>
+                           </VBox>
+
+                           <!-- Pedidos -->
+                           <VBox prefWidth="190.0" spacing="30.0">
+                              <CheckBox fx:id="chkPedidos" onAction="#toggleCheckboxes" styleClass="main-checkbox" text="Pedidos" />
+                              <VBox fx:id="vboxPedidos" managed="false" spacing="5" styleClass="submenu-vbox" visible="false">
+                                 <CheckBox styleClass="submenu-checkbox" text="Nuevo Pedido" />
+                                 <CheckBox styleClass="submenu-checkbox" text="Modificar Pedido" />
+                                 <CheckBox styleClass="submenu-checkbox" text="Borrar Pedido" />
+                                 <CheckBox styleClass="submenu-checkbox" text="Listar Pedidos" />
+                              </VBox>
+                           </VBox>
+
+                           <!-- Albaranes -->
+                           <VBox prefWidth="190.0" spacing="30.0">
+                              <CheckBox fx:id="chkAlbaranes" onAction="#toggleCheckboxes" styleClass="main-checkbox" text="Albaranes" />
+                              <VBox fx:id="vboxAlbaranes" managed="false" spacing="5" styleClass="submenu-vbox" visible="false">
+                                 <CheckBox styleClass="submenu-checkbox" text="Nuevo Albarán" />
+                                 <CheckBox styleClass="submenu-checkbox" text="Modificar Albarán" />
+                                 <CheckBox styleClass="submenu-checkbox" text="Borrar Albarán" />
+                                 <CheckBox styleClass="submenu-checkbox" text="Listar Albaranes" />
+                              </VBox>
+                           </VBox>
+
+                           <!-- Facturas -->
+                           <VBox prefWidth="190.0" spacing="30.0">
+                              <CheckBox fx:id="chkFacturas" onAction="#toggleCheckboxes" styleClass="main-checkbox" text="Facturas" />
+                              <VBox fx:id="vboxFacturas" managed="false" spacing="5" styleClass="submenu-vbox" visible="false">
+                                 <CheckBox styleClass="submenu-checkbox" text="Nueva Factura" />
+                                 <CheckBox styleClass="submenu-checkbox" text="Modificar Factura" />
+                                 <CheckBox styleClass="submenu-checkbox" text="Borrar Factura" />
+                                 <CheckBox styleClass="submenu-checkbox" text="Listar Facturas" />
+                              </VBox>
+                           </VBox>
+                           <!-- Clientes -->
+                           <VBox prefWidth="190.0" spacing="30.0">
+                              <CheckBox fx:id="chkClientes" onAction="#toggleCheckboxes" styleClass="main-checkbox" text="Clientes" />
+                              <VBox fx:id="vboxClientes" managed="false" spacing="5" styleClass="submenu-vbox" visible="false">
+                                 <CheckBox styleClass="submenu-checkbox" text="Nuevo Cliente" />
+                                 <CheckBox styleClass="submenu-checkbox" text="Modificar Cliente" />
+                                 <CheckBox styleClass="submenu-checkbox" text="Borrar Cliente" />
+                                 <CheckBox styleClass="submenu-checkbox" text="Listar Clientes" />
+                              </VBox>
+                           </VBox>
+                        </HBox>
+
+                        <!-- Segunda fila de permisos -->
+                        <HBox alignment="TOP_LEFT" prefHeight="211.0" prefWidth="962.0" spacing="50.0">
+
+                           <!-- Proveedores -->
+                           <VBox prefWidth="190.0" spacing="30.0">
+                              <CheckBox fx:id="chkProveedores" onAction="#toggleCheckboxes" styleClass="main-checkbox" text="Proveedores" />
+                              <VBox fx:id="vboxProveedores" managed="false" spacing="5" styleClass="submenu-vbox" visible="false">
+                                 <CheckBox styleClass="submenu-checkbox" text="Nuevo Proveedor" />
+                                 <CheckBox styleClass="submenu-checkbox" text="Modificar Proveedor" />
+                                 <CheckBox styleClass="submenu-checkbox" text="Borrar Proveedor" />
+                                 <CheckBox styleClass="submenu-checkbox" text="Listar Proveedores" />
+                              </VBox>
+                           </VBox>
+
+                           <!-- Diario -->
+                           <VBox prefWidth="190.0" spacing="30.0">
+                              <CheckBox fx:id="chkDiario" onAction="#toggleCheckboxes" styleClass="main-checkbox" text="Diario" />
+                              <VBox fx:id="vboxDiario" managed="false" spacing="5" styleClass="submenu-vbox" visible="false">
+                                 <CheckBox styleClass="submenu-checkbox" text="Facturas Emitidas" />
+                                 <CheckBox styleClass="submenu-checkbox" text="Facturas Recibidas" />
+                                 <CheckBox styleClass="submenu-checkbox" text="Gastos" />
+                              </VBox>
+                           </VBox>
+
+                           <!-- Resumen -->
+                           <VBox prefWidth="190.0" spacing="30.0">
+                              <CheckBox fx:id="chkResumen" onAction="#toggleCheckboxes" styleClass="main-checkbox" text="Resumen Anual" />
+                              <VBox fx:id="vboxResumen" managed="false" spacing="5" styleClass="submenu-vbox" visible="false">
+                                 <CheckBox styleClass="submenu-checkbox" text="Facturas Emitidas" />
+                                 <CheckBox styleClass="submenu-checkbox" text="Facturas Recibidas" />
+                                 <CheckBox styleClass="submenu-checkbox" text="Gastos" />
+                              </VBox>
+                           </VBox>
+                           <VBox prefWidth="190.0" spacing="30.0">
+                              <children>
+                                 <CheckBox fx:id="chkOtros" onAction="#toggleCheckboxes" styleClass="main-checkbox" text="Otros" />
+                                 <VBox fx:id="vboxOtros" managed="false" spacing="5" styleClass="submenu-vbox" visible="false">
+                                    <children>
+                                       <CheckBox styleClass="submenu-checkbox" text="Listado Gastos" />
+                                       <CheckBox styleClass="submenu-checkbox" text="Servicios" />
+                                       <CheckBox styleClass="submenu-checkbox" text="Productos" />
+                                       <CheckBox styleClass="submenu-checkbox" text="Usuarios" />
+                                    </children>
+                                 </VBox>
+                              </children>
+                           </VBox>
+                        </HBox>
+                     </VBox>
+                  </content>
+               </ScrollPane>
+
+            </AnchorPane>
+         </bottom>
+      </BorderPane>
+   </children>
+</VBox>
