@@ -20,11 +20,12 @@ import java.util.List;
 import Modelos.Cliente;
 import Modelos.Pedido;
 import Modelos.Presupuesto;
+import Modelos.Producto;
 
 public class ConexionBD {
     private static final String URL = "jdbc:mysql://localhost:3306/programa";
     private static final String USER = "root";
-    private static final String PASSWORD = "admin";
+    private static final String PASSWORD = "asd123";
 
     // Método conexión
     public static Connection getConnection() throws SQLException {
@@ -315,6 +316,54 @@ public class ConexionBD {
                 return true;
             } else {
                 showAlert("Error", "No se pudo eliminar el pedido.", Alert.AlertType.ERROR);
+                return false;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            showAlert("Error", "Error en la base de datos: " + e.getMessage(), Alert.AlertType.ERROR);
+            return false;
+        }
+    }
+    
+    
+    public List<Producto> getAllProductos() {
+        List<Producto> productos = new ArrayList<>();
+
+        try (Connection conn = this.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery("SELECT * FROM productos")) {
+
+            while (rs.next()) {
+                Producto producto = new Producto();
+                producto.setIdProducto(rs.getInt("id_producto"));
+                producto.setCodigoProducto(rs.getString("codigo_producto"));
+                producto.setProducto(rs.getString("producto"));
+                producto.setImporte(rs.getDouble("importe"));
+                productos.add(producto);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return productos;
+    }
+    
+    
+    public boolean deleteProducto(int idProducto) {
+        String query = "DELETE FROM productos WHERE id = ?";
+        
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement(query)) {
+             
+            ps.setInt(1, idProducto);
+            int filasAfectadas = ps.executeUpdate();
+
+            if (filasAfectadas > 0) {
+                showAlert("Éxito", "Producto eliminado correctamente.", Alert.AlertType.INFORMATION);
+                return true;
+            } else {
+                showAlert("Error", "No se pudo eliminar el producto.", Alert.AlertType.ERROR);
                 return false;
             }
         } catch (SQLException e) {

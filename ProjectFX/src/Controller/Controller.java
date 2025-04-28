@@ -88,6 +88,61 @@ public class Controller {
             e.printStackTrace();
         }
     }
+    
+    @FXML
+    private void abrirNuevoProveedor(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/NuevoProveedor.fxml"));
+            Scene scene = new Scene(loader.load(), 1920, 1080);
+
+            Stage stage = new Stage();
+            stage.setTitle("Nuevo Cliente");
+            stage.setScene(scene);
+            stage.show();
+            stage.setMaximized(true);
+
+            scene.getStylesheets().add(getClass().getResource("/Styles/Nuevo.css").toExternalForm());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    @FXML
+    private void abrirUsuarios(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/AddUsersFXML.fxml"));
+            Scene scene = new Scene(loader.load(), 1920, 1080);
+
+            Stage stage = new Stage();
+            stage.setTitle("Usuarios");
+            stage.setScene(scene);
+            stage.show();
+            stage.setMaximized(true);
+
+            scene.getStylesheets().add(getClass().getResource("/Styles/NuevoUser.css").toExternalForm());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    
+    @FXML
+    private void abrirModificarCliente(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/NuevoClienteFXML.fxml"));
+            Scene scene = new Scene(loader.load(), 1920, 1080);
+
+            Stage stage = new Stage();
+            stage.setTitle("Nuevo Cliente");
+            stage.setScene(scene);
+            stage.show();
+            stage.setMaximized(true);
+
+            scene.getStylesheets().add(getClass().getResource("/Styles/Nuevo.css").toExternalForm());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     @FXML
     private void abrirListarPedidos(ActionEvent event) {
@@ -131,7 +186,26 @@ public class Controller {
             stage.show();
             stage.setMaximized(true);
 
-            scene.getStylesheets().add(getClass().getResource("/Styles/ListPresupuestos.css").toExternalForm());
+            scene.getStylesheets().add(getClass().getResource("/Styles/ListPresupuesto.css").toExternalForm());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    
+    @FXML
+    private void AbrirProducto(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/AddProductoFXML.fxml"));
+            Scene scene = new Scene(loader.load(), 1920, 1080);
+
+            Stage stage = new Stage();
+            stage.setTitle("Gestión de Clientes");
+            stage.setScene(scene);
+            stage.show();
+            stage.setMaximized(true);
+
+            scene.getStylesheets().add(getClass().getResource("/Styles/AddProductoCSS.css").toExternalForm());
         } catch (IOException e) {
             e.printStackTrace();
         }

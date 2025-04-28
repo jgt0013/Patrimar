@@ -3,23 +3,25 @@ package Main;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import java.io.IOException;
 
-public class ListPresupuestos extends Application {
+public class AddProducto extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/ListPresupuestosFXML.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/AddProductoFXML.fxml"));
             VBox root = loader.load();
             Scene scene = new Scene(root, 1920, 1080);
-            primaryStage.setTitle("Gestión de Presupuestos");
+            primaryStage.setTitle("Gestión de Productos");
             primaryStage.setScene(scene);
             primaryStage.show();
             primaryStage.setMaximized(true);
-            scene.getStylesheets().add(getClass().getResource("/Styles/ListPresupuesto.css").toExternalForm());
+            scene.getStylesheets().add(getClass().getResource("/Styles/AddProductoCSS.css").toExternalForm());
             primaryStage.setResizable(true);
+
         } catch (IOException e) {
             e.printStackTrace();
         }

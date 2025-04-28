@@ -1,8 +1,14 @@
 package Controller;
 
+import java.io.IOException;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 public class NewUserController {
 
@@ -39,5 +45,41 @@ public class NewUserController {
 	    vboxOtros.setManaged(chkOtros.isSelected());
 	}
 
+	
+	@FXML
+    private void abrirModifUser(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/ModifUsers.fxml"));
+            Scene scene = new Scene(loader.load(), 1920, 1080);
+
+            Stage stage = new Stage();
+            stage.setTitle("Modificar Usuarios");
+            stage.setScene(scene);
+            stage.show();
+            stage.setMaximized(true);
+
+            scene.getStylesheets().add(getClass().getResource("/Styles/ModifUserCSS.css").toExternalForm());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+	
+	@FXML
+    private void abrirConsultarUser(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/ConsultarUsers.fxml"));
+            Scene scene = new Scene(loader.load(), 1920, 1080);
+
+            Stage stage = new Stage();
+            stage.setTitle("Consultar Usuarios");
+            stage.setScene(scene);
+            stage.show();
+            stage.setMaximized(true);
+
+            scene.getStylesheets().add(getClass().getResource("/Styles/ConsultarUsersCSS.css").toExternalForm());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 }

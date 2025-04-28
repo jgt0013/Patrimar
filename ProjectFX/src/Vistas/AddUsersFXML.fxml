@@ -56,9 +56,9 @@
                <!-- VBox de botones en la esquina inferior derecha -->
                <VBox prefHeight="345.0" prefWidth="271.0" spacing="70.0" AnchorPane.bottomAnchor="219.0" AnchorPane.rightAnchor="44.0">
                   <children>
-                     <Button fx:id="btnAdd" mnemonicParsing="false" text="Añadir" />
-                     <Button fx:id="btnModificar" text="Modificar" />
-                     <Button fx:id="btnConsultar" text="Consultar" />
+                     <Button fx:id="btnAdd" mnemonicParsing="false" text="Añadir"/>
+                     <Button fx:id="btnModificar" text="Modificar" onAction="#abrirModifUser"/>
+                     <Button fx:id="btnConsultar" text="Consultar" onAction="#abrirConsultarUser"/>
                   </children>
                </VBox>
 

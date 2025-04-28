@@ -6,17 +6,13 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.geometry.Pos?>
 
-<BorderPane xmlns="http://javafx.com/javafx/21.0.1" 
-            xmlns:fx="http://javafx.com/fxml/1" 
-            fx:controller="Controller.Controller"
-            stylesheets="@styles.css">
+<BorderPane stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Controller">
    
    <top>
       <AnchorPane styleClass="top-pane">
          <children>
-            <Label layoutX="32.0" layoutY="29.0" text="Buenas, @usuario" styleClass="welcome-label"/>
+            <Label layoutX="32.0" layoutY="29.0" styleClass="welcome-label" text="Buenas, @usuario" />
          </children>
       </AnchorPane>
    </top>
@@ -25,91 +21,90 @@
       <AnchorPane styleClass="center-pane">
          <children>
             <!-- Contenedor principal -->
-            <HBox alignment="CENTER" spacing="60" AnchorPane.topAnchor="50" AnchorPane.bottomAnchor="50" 
-                  AnchorPane.leftAnchor="50" AnchorPane.rightAnchor="50">
+            <HBox alignment="CENTER" spacing="60" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50" AnchorPane.rightAnchor="50" AnchorPane.topAnchor="50">
                
                <!-- Primera columna (botones principales) -->
-               <VBox alignment="CENTER" spacing="60">
+               <VBox alignment="CENTER" spacing="60.0">
                   <!-- Primera fila de botones -->
-                  <HBox alignment="CENTER" spacing="60">
+                  <HBox alignment="CENTER" spacing="60.0">
                      <VBox alignment="CENTER" spacing="10">
-                        <Button fx:id="btnPresupuesto" text="Presupuesto" styleClass="main-button" onAction="#toggleButtons"/>
-                        <VBox fx:id="vboxPresupuesto" spacing="5" visible="false" styleClass="submenu-vbox">
-                           <Button text="Nuevo Presupuesto" styleClass="submenu-button"/>
-                           <Button text="Modificar Presupuesto" styleClass="submenu-button"/>
-                           <Button text="Borrar Presupuesto" styleClass="submenu-button"/>
-                           <Button text="Listar Presupuestos" styleClass="submenu-button" onAction="#abrirListarPresupuestos"/>
+                        <Button fx:id="btnPresupuesto" onAction="#toggleButtons" styleClass="main-button" text="Presupuesto" />
+                        <VBox fx:id="vboxPresupuesto" spacing="5" styleClass="submenu-vbox" visible="false">
+                           <Button styleClass="submenu-button" text="Nuevo Presupuesto" />
+                           <Button styleClass="submenu-button" text="Modificar Presupuesto" />
+                           <Button styleClass="submenu-button" text="Borrar Presupuesto" />
+                           <Button onAction="#abrirListarPresupuestos" styleClass="submenu-button" text="Listar Presupuestos" />
                         </VBox>
                      </VBox>
 
                      <VBox alignment="CENTER" spacing="10">
-                        <Button fx:id="btnPedidos" text="Pedidos" styleClass="main-button" onAction="#toggleButtons"/>
-                        <VBox fx:id="vboxPedidos" spacing="5" visible="false" styleClass="submenu-vbox">
-                           <Button text="Nuevo Pedido" styleClass="submenu-button"/>
-                           <Button text="Modificar Pedido" styleClass="submenu-button"/>
-                           <Button text="Borrar Pedido" styleClass="submenu-button"/>
-                           <Button text="Listar Pedidos" styleClass="submenu-button" onAction="#abrirListarPedidos"/>
+                        <Button fx:id="btnPedidos" onAction="#toggleButtons" styleClass="main-button" text="Pedidos" />
+                        <VBox fx:id="vboxPedidos" spacing="5" styleClass="submenu-vbox" visible="false">
+                           <Button styleClass="submenu-button" text="Nuevo Pedido" />
+                           <Button styleClass="submenu-button" text="Modificar Pedido" />
+                           <Button styleClass="submenu-button" text="Borrar Pedido" />
+                           <Button onAction="#abrirListarPedidos" styleClass="submenu-button" text="Listar Pedidos" />
                         </VBox>
                      </VBox>
 
                      <VBox alignment="CENTER" spacing="10">
-                        <Button fx:id="btnAlbaranes" text="Albaranes" styleClass="main-button" onAction="#toggleButtons"/>
-                        <VBox fx:id="vboxAlbaranes" spacing="5" visible="false" styleClass="submenu-vbox">
-                           <Button text="Nuevo Albarán" styleClass="submenu-button"/>
-                           <Button text="Modificar Albarán" styleClass="submenu-button"/>
-                           <Button text="Borrar Albarán" styleClass="submenu-button"/>
-                           <Button text="Listar Albaranes" styleClass="submenu-button"/>
+                        <Button fx:id="btnAlbaranes" onAction="#toggleButtons" styleClass="main-button" text="Albaranes" />
+                        <VBox fx:id="vboxAlbaranes" spacing="5" styleClass="submenu-vbox" visible="false">
+                           <Button styleClass="submenu-button" text="Nuevo Albarán" />
+                           <Button styleClass="submenu-button" text="Modificar Albarán" />
+                           <Button styleClass="submenu-button" text="Borrar Albarán" />
+                           <Button styleClass="submenu-button" text="Listar Albaranes" />
                         </VBox>
                      </VBox>
 
                      <VBox alignment="CENTER" spacing="10">
-                        <Button fx:id="btnFacturas" text="Facturas" styleClass="main-button" onAction="#toggleButtons"/>
-                        <VBox fx:id="vboxFacturas" spacing="5" visible="false" styleClass="submenu-vbox">
-                           <Button text="Nueva Factura" styleClass="submenu-button"/>
-                           <Button text="Modificar Factura" styleClass="submenu-button"/>
-                           <Button text="Borrar Factura" styleClass="submenu-button"/>
-                           <Button text="Listar Facturas" styleClass="submenu-button"/>
+                        <Button fx:id="btnFacturas" onAction="#toggleButtons" styleClass="main-button" text="Facturas" />
+                        <VBox fx:id="vboxFacturas" spacing="5" styleClass="submenu-vbox" visible="false">
+                           <Button styleClass="submenu-button" text="Nueva Factura" />
+                           <Button styleClass="submenu-button" text="Modificar Factura" />
+                           <Button styleClass="submenu-button" text="Borrar Factura" />
+                           <Button styleClass="submenu-button" text="Listar Facturas" />
                         </VBox>
                      </VBox>
                   </HBox>
                   
                   <!-- Segunda fila de botones -->
-                  <HBox alignment="CENTER" spacing="60">
+                  <HBox alignment="CENTER" prefHeight="171.0" prefWidth="642.0" spacing="60">
                      <VBox alignment="CENTER" spacing="10">
-                        <Button fx:id="btnClientes" text="Clientes" styleClass="main-button" onAction="#toggleButtons"/>
-                        <VBox fx:id="vboxClientes" spacing="5" visible="false" styleClass="submenu-vbox">
-                           <Button text="Nuevo Cliente" styleClass="submenu-button" onAction="#abrirNuevoCliente"/>
-                           <Button text="Modificar Cliente" styleClass="submenu-button"/>
-                           <Button text="Borrar Cliente" styleClass="submenu-button"/>
-                           <Button text="Listar Clientes" styleClass="submenu-button" onAction="#abrirListarClientes"/>
+                        <Button fx:id="btnClientes" onAction="#toggleButtons" styleClass="main-button" text="Clientes" />
+                        <VBox fx:id="vboxClientes" spacing="5" styleClass="submenu-vbox" visible="false">
+                           <Button onAction="#abrirNuevoCliente" styleClass="submenu-button" text="Nuevo Cliente" />
+                           <Button onAction="#abrirModificarCliente" styleClass="submenu-button" text="Modificar Cliente" />
+                           <Button styleClass="submenu-button" text="Borrar Cliente" />
+                           <Button onAction="#abrirListarClientes" styleClass="submenu-button" text="Listar Clientes" />
+                        </VBox>
+                     </VBox>
+
+                     <VBox alignment="CENTER" prefWidth="125.0" spacing="10">
+                        <Button fx:id="btnProveedores" onAction="#toggleButtons" styleClass="main-button" text="Proveedores" />
+                        <VBox fx:id="vboxProveedores" spacing="5" styleClass="submenu-vbox" visible="false">
+                           <Button onAction="#abrirNuevoProveedor" styleClass="submenu-button" text="Nuevo Proveedor" />
+                           <Button styleClass="submenu-button" text="Modificar Proveedor" />
+                           <Button styleClass="submenu-button" text="Borrar Proveedor" />
+                           <Button styleClass="submenu-button" text="Listar Proveedores" />
                         </VBox>
                      </VBox>
 
                      <VBox alignment="CENTER" spacing="10">
-                        <Button fx:id="btnProveedores" text="Proveedores" styleClass="main-button" onAction="#toggleButtons"/>
-                        <VBox fx:id="vboxProveedores" spacing="5" visible="false" styleClass="submenu-vbox">
-                           <Button text="Nuevo Proveedor" styleClass="submenu-button"/>
-                           <Button text="Modificar Proveedor" styleClass="submenu-button"/>
-                           <Button text="Borrar Proveedor" styleClass="submenu-button"/>
-                           <Button text="Listar Proveedores" styleClass="submenu-button"/>
+                        <Button fx:id="btnDiario" onAction="#toggleButtons" styleClass="main-button" text="Diario" />
+                        <VBox fx:id="vboxDiario" prefWidth="114.0" spacing="5" styleClass="submenu-vbox" visible="false">
+                           <Button styleClass="submenu-button" text="Facturas Emitidas" />
+                           <Button styleClass="submenu-button" text="Facturas Recibidas" />
+                           <Button styleClass="submenu-button" text="Gastos" />
                         </VBox>
                      </VBox>
 
                      <VBox alignment="CENTER" spacing="10">
-                        <Button fx:id="btnDiario" text="Diario" styleClass="main-button" onAction="#toggleButtons"/>
-                        <VBox fx:id="vboxDiario" spacing="5" visible="false" styleClass="submenu-vbox">
-                           <Button text="Facturas Emitidas" styleClass="submenu-button"/>
-                           <Button text="Facturas Recibidas" styleClass="submenu-button"/>
-                           <Button text="Gastos" styleClass="submenu-button"/>
-                        </VBox>
-                     </VBox>
-
-                     <VBox alignment="CENTER" spacing="10">
-                        <Button fx:id="btnResumen" text="Resumen Anual" styleClass="main-button" onAction="#toggleButtons"/>
-                        <VBox fx:id="vboxResumen" spacing="5" visible="false" styleClass="submenu-vbox">
-                           <Button text="Facturas Emitidas" styleClass="submenu-button"/>
-                           <Button text="Facturas Recibidas" styleClass="submenu-button"/>
-                           <Button text="Gastos" styleClass="submenu-button"/>
+                        <Button fx:id="btnResumen" onAction="#toggleButtons" styleClass="main-button" text="Resumen Anual" />
+                        <VBox fx:id="vboxResumen" spacing="5" styleClass="submenu-vbox" visible="false">
+                           <Button styleClass="submenu-button" text="Facturas Emitidas" />
+                           <Button styleClass="submenu-button" text="Facturas Recibidas" />
+                           <Button styleClass="submenu-button" text="Gastos" />
                         </VBox>
                      </VBox>
                   </HBox>
@@ -117,12 +112,12 @@
                
                <!-- Botón Otros alineado a la derecha pero en la misma línea -->
                <VBox alignment="CENTER" spacing="10" styleClass="others-container">
-                  <Button fx:id="btnOtros" text="Otros" styleClass="main-button" onAction="#toggleButtons"/>
-                  <VBox fx:id="vboxOtros" spacing="5" visible="false" styleClass="submenu-vbox">
-                     <Button text="Listado Gastos" styleClass="submenu-button"/>
-                     <Button text="Servicios" styleClass="submenu-button"/>
-                     <Button text="Productos" styleClass="submenu-button"/>
-                     <Button text="Usuarios" styleClass="submenu-button"/>
+                  <Button fx:id="btnOtros" onAction="#toggleButtons" styleClass="main-button" text="Otros" />
+                  <VBox fx:id="vboxOtros" spacing="5" styleClass="submenu-vbox" visible="false">
+                     <Button styleClass="submenu-button" text="Listado Gastos" />
+                     <Button styleClass="submenu-button" text="Servicios" />
+                     <Button styleClass="submenu-button" text="Productos" onAction="#AbrirProducto"/>
+                     <Button onAction="#abrirUsuarios" styleClass="submenu-button" text="Usuarios" />
                   </VBox>
                </VBox>
             </HBox>
