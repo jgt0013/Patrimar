@@ -200,12 +200,31 @@ public class Controller {
             Scene scene = new Scene(loader.load(), 1920, 1080);
 
             Stage stage = new Stage();
-            stage.setTitle("Gestión de Clientes");
+            stage.setTitle("Gestión de Productos");
             stage.setScene(scene);
             stage.show();
             stage.setMaximized(true);
 
             scene.getStylesheets().add(getClass().getResource("/Styles/AddProductoCSS.css").toExternalForm());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    
+    @FXML
+    private void AbrirServicio(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/AddServicioFXML.fxml"));
+            Scene scene = new Scene(loader.load(), 1920, 1080);
+
+            Stage stage = new Stage();
+            stage.setTitle("Gestión de Servicios");
+            stage.setScene(scene);
+            stage.show();
+            stage.setMaximized(true);
+
+            scene.getStylesheets().add(getClass().getResource("/Styles/AddServicioCSS.css").toExternalForm());
         } catch (IOException e) {
             e.printStackTrace();
         }

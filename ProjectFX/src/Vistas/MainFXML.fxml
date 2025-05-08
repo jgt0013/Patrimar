@@ -115,7 +115,7 @@
                   <Button fx:id="btnOtros" onAction="#toggleButtons" styleClass="main-button" text="Otros" />
                   <VBox fx:id="vboxOtros" spacing="5" styleClass="submenu-vbox" visible="false">
                      <Button styleClass="submenu-button" text="Listado Gastos" />
-                     <Button styleClass="submenu-button" text="Servicios" />
+                     <Button styleClass="submenu-button" text="Servicios" onAction="#AbrirServicio"/>
                      <Button styleClass="submenu-button" text="Productos" onAction="#AbrirProducto"/>
                      <Button onAction="#abrirUsuarios" styleClass="submenu-button" text="Usuarios" />
                   </VBox>

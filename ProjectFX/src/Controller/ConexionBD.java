@@ -21,6 +21,7 @@ import Modelos.Cliente;
 import Modelos.Pedido;
 import Modelos.Presupuesto;
 import Modelos.Producto;
+import Modelos.Servicio;
 
 public class ConexionBD {
     private static final String URL = "jdbc:mysql://localhost:3306/programa";
@@ -351,7 +352,7 @@ public class ConexionBD {
     
     
     public boolean deleteProducto(int idProducto) {
-        String query = "DELETE FROM productos WHERE id = ?";
+        String query = "DELETE FROM productos WHERE id_producto = ?";
         
         try (Connection connection = getConnection();
              PreparedStatement ps = connection.prepareStatement(query)) {
@@ -364,6 +365,56 @@ public class ConexionBD {
                 return true;
             } else {
                 showAlert("Error", "No se pudo eliminar el producto.", Alert.AlertType.ERROR);
+                return false;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            showAlert("Error", "Error en la base de datos: " + e.getMessage(), Alert.AlertType.ERROR);
+            return false;
+        }
+    }
+    
+    
+    
+    public List<Servicio> getAllServicios() {
+        List<Servicio> servicios = new ArrayList<>();
+
+        try (Connection conn = this.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery("SELECT * FROM servicios")) {
+
+            while (rs.next()) {
+                Servicio servicio = new Servicio();
+                servicio.setIdServicio(rs.getInt("id_servicio"));
+                servicio.setCodigoServicio(rs.getString("codigo_servicio"));
+                servicio.setServicio(rs.getString("servicio"));
+                servicio.setImporte(rs.getDouble("importe"));
+                servicios.add(servicio);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return servicios;
+    }
+
+    
+    
+    public boolean deleteServicio(int idServicio) {
+        String query = "DELETE FROM servicios WHERE id_servicio = ?";
+        
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement(query)) {
+             
+            ps.setInt(1, idServicio);
+            int filasAfectadas = ps.executeUpdate();
+
+            if (filasAfectadas > 0) {
+                showAlert("Éxito", "Servicio eliminado correctamente.", Alert.AlertType.INFORMATION);
+                return true;
+            } else {
+                showAlert("Error", "No se pudo eliminar el servicio.", Alert.AlertType.ERROR);
                 return false;
             }
         } catch (SQLException e) {
