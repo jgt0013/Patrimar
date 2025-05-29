@@ -30,7 +30,7 @@
 }
 
 /* TextFields */
-.text-field, #TFNombre, #TFPassword, #TFUser, #TFRol {
+.text-field, #TFNombre, #TFPassword,#TFBuscar, #TFUser, #TFRol {
     -fx-background-color: #2A2A3A;
     -fx-text-fill: white;
     -fx-font-size: 18px;
@@ -48,7 +48,7 @@
 }
 
 /* Botones */
-#btnApply, #btnCancelar, #btnConsultar {
+#btnApply, #btnCancelar, #btnConsultar, #btnBuscar {
     -fx-background-color: #000625;
     -fx-text-fill: white;
     -fx-font-size: 20px;
@@ -61,7 +61,7 @@
     -fx-transition: all 0.2s ease-in-out;
 }
 
-#btnApply:hover, #btnCancelar:hover, #btnConsultar:hover {
+#btnApply:hover, #btnCancelar:hover, #btnConsultar:hover, btnBuscar:hover {
     -fx-background-color: #1a1a3a;
     -fx-cursor: hand;
     -fx-translate-y: -2;

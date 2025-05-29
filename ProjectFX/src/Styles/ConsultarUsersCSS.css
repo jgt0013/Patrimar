@@ -16,22 +16,45 @@
     -fx-font-weight: bold;
 }
 
-/* Tabla de usuarios */
+/* Tabla de productos */
 #TableUsuarios {
-    -fx-background-color: #2D2D2D;
-    -fx-border-color: #444444;
-    -fx-border-radius: 5px;
+    -fx-background-color: #1E1E2E;
+    -fx-border-color: #000625;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
     -fx-table-cell-border-color: transparent;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 8, 0, 0, 2);
 }
 
+/* Fondo de encabezados */
 #TableUsuarios .column-header-background {
     -fx-background-color: #000625;
+    -fx-background-radius: 10px 10px 0px 0px;
 }
 
+/* Estilos de los encabezados y columnas */
 #TableUsuarios .column-header, #TableUsuarios .table-column {
     -fx-text-fill: white;
     -fx-font-weight: bold;
+    -fx-font-size: 16px;
 }
+
+/* Estilo de las filas */
+#TableUsuarios .table-row-cell {
+    -fx-background-color: #2D2D3A;
+    -fx-border-color: transparent;
+}
+
+#TableUsuarios .table-row-cell:filled:selected {
+    -fx-background-color: #4A90E2;
+    -fx-text-fill: white;
+}
+
+#TableUsuarios .table-cell {
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+}
+
 
 /* Botones principales */
 #btnEliminar, #btnImprimir, #btnLimpiar {

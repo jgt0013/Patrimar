@@ -46,8 +46,6 @@
                         <TextField fx:id="TFPassword" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <Label prefHeight="17.0" prefWidth="120.0" text="Usuario:" GridPane.rowIndex="3" />
                         <TextField fx:id="TFUsers" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <Label prefWidth="120.0"  text="Permisos:" GridPane.rowIndex="4" />
-                        <TextField fx:id="TFPermisos" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                      </children>
                      <rowConstraints>
                         <RowConstraints />
@@ -68,17 +66,53 @@
                      </rowConstraints>
                   </GridPane>
 
-                  <TableView fx:id="TableUsuarios" layoutX="59.0" layoutY="282.0" prefHeight="585.0" prefWidth="1417.0" AnchorPane.bottomAnchor="100" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="483.0" AnchorPane.topAnchor="282.0">
-                     <columns>
-					        <TableColumn fx:id="colID" prefWidth="75.0" text="ID" />
-					        <TableColumn fx:id="colNombre" prefWidth="150.0" text="Nombre" />
-					        <TableColumn fx:id="colPassword" prefWidth="150.0" text="Contraseña" />
-					        <TableColumn fx:id="colUsers" prefWidth="150.0" text="Usuario" />
-					        <TableColumn fx:id="colPermisos" prefWidth="100.0" text="Permisos" />
+                  <TableView fx:id="TableUsuarios" layoutX="59.0" layoutY="282.0" prefHeight="585.0" prefWidth="1700.0" AnchorPane.bottomAnchor="100" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="483.0" AnchorPane.topAnchor="282.0">
+					  <columns>
+					    <TableColumn fx:id="colID" prefWidth="75.0" text="ID" />
+					    <TableColumn fx:id="colNombre" prefWidth="150.0" text="Nombre" />
+					    <TableColumn fx:id="colPassword" prefWidth="150.0" text="Contraseña" />
+					    <TableColumn fx:id="colUsers" prefWidth="150.0" text="Usuario" />
+					    <TableColumn fx:id="colPresupuestoNuevo" prefWidth="100.0" text="Presupuesto Nuevo" />
+					    <TableColumn fx:id="colPresupuestoModificar" prefWidth="120.0" text="Presupuesto Modificar" />
+					    <TableColumn fx:id="colPresupuestoListar" prefWidth="100.0" text="Presupuesto Listar" />
+					    
+					    <TableColumn fx:id="colPedidosNuevo" prefWidth="100.0" text="Pedidos Nuevo" />
+					    <TableColumn fx:id="colPedidosModificar" prefWidth="120.0" text="Pedidos Modificar" />
+					    <TableColumn fx:id="colPedidosListar" prefWidth="100.0" text="Pedidos Listar" />
+					    
+					    <TableColumn fx:id="colAlbaranesNuevo" prefWidth="100.0" text="Albaranes Nuevo" />
+					    <TableColumn fx:id="colAlbaranesModificar" prefWidth="120.0" text="Albaranes Modificar" />
+					    <TableColumn fx:id="colAlbaranesListar" prefWidth="100.0" text="Albaranes Listar" />
+					    
+					    <TableColumn fx:id="colFacturasNuevo" prefWidth="100.0" text="Facturas Nuevo" />
+					    <TableColumn fx:id="colFacturasModificar" prefWidth="120.0" text="Facturas Modificar" />
+					    <TableColumn fx:id="colFacturasListar" prefWidth="100.0" text="Facturas Listar" />
+					    
+					    <TableColumn fx:id="colClientesNuevo" prefWidth="100.0" text="Clientes Nuevo" />
+					    <TableColumn fx:id="colClientesModificar" prefWidth="120.0" text="Clientes Modificar" />
+					    <TableColumn fx:id="colClientesListar" prefWidth="100.0" text="Clientes Listar" />
+					    
+					    <TableColumn fx:id="colProveedoresNuevo" prefWidth="100.0" text="Proveedores Nuevo" />
+					    <TableColumn fx:id="colProveedoresModificar" prefWidth="120.0" text="Proveedores Modificar" />
+					    <TableColumn fx:id="colProveedoresListar" prefWidth="100.0" text="Proveedores Listar" />
+					    
+					    <TableColumn fx:id="colDiarioEmitidas" prefWidth="100.0" text="Diario Emitidas" />
+					    <TableColumn fx:id="colDiarioRecibidas" prefWidth="100.0" text="Diario Recibidas" />
+					    <TableColumn fx:id="colDiarioGastos" prefWidth="100.0" text="Diario Gastos" />
+					    
+					    <TableColumn fx:id="colResumenEmitidas" prefWidth="100.0" text="Resumen Emitidas" />
+					    <TableColumn fx:id="colResumenRecibidas" prefWidth="100.0" text="Resumen Recibidas" />
+					    <TableColumn fx:id="colResumenGastos" prefWidth="100.0" text="Resumen Gastos" />
+					    
+					    <TableColumn fx:id="colOtrosListadoGastos" prefWidth="120.0" text="Otros Listado Gastos" />
+					    <TableColumn fx:id="colOtrosServicios" prefWidth="100.0" text="Otros Servicios" />
+					    <TableColumn fx:id="colOtrosProductos" prefWidth="100.0" text="Otros Productos" />
+					    <TableColumn fx:id="colOtrosUsuarios" prefWidth="100.0" text="Otros Usuarios" />
+					    
 					  </columns>
-                  </TableView>
+					</TableView>
 
-                  <!-- Segundo GridPane de botones -->
+
                   <GridPane layoutX="1579.0" layoutY="402.0" prefHeight="418.0" prefWidth="271.0" vgap="10" AnchorPane.bottomAnchor="189.0" AnchorPane.rightAnchor="16.0">
                      <children>
                         <Button fx:id="btnEliminar" text="Eliminar" GridPane.columnIndex="0" GridPane.rowIndex="2" />

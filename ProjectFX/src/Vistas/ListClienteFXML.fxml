@@ -123,14 +123,21 @@
 					  </columns>
                   </TableView>
 
-                  <!-- Segundo GridPane de botones - Modificado para ser responsive -->
-                  <VBox layoutX="1579.0" layoutY="402.0" prefWidth="271.0" spacing="10" AnchorPane.bottomAnchor="189.0" AnchorPane.rightAnchor="16.0">
-                     <children>
-                        <Button fx:id="btnLimpiar" mnemonicParsing="false" text="Limpiar" onAction="#limpiarCampos" maxWidth="1.7976931348623157E308" />
-                        <Button fx:id="btnEliminar" onAction="#eliminarCliente" text="Eliminar" maxWidth="1.7976931348623157E308" />
-                        <Button fx:id="btnImprimir" text="Imprimir" maxWidth="1.7976931348623157E308" />
-                     </children>
-                  </VBox>
+                  <VBox layoutX="1579.0" layoutY="402.0" spacing="10" AnchorPane.bottomAnchor="189.0" AnchorPane.rightAnchor="16.0">
+						    <children>
+						        <Button fx:id="btnLimpiar" text="Limpiar" onAction="#limpiarCampos" maxWidth="Infinity" />
+						        <Button fx:id="btnEliminar" text="Eliminar" onAction="#eliminarCliente" maxWidth="Infinity" />
+						        
+						        <!-- Botón desplegable de Imprimir -->
+						        <VBox alignment="CENTER" spacing="10">
+						            <Button fx:id="btnImprimir" onAction="#toggleOpcionesImprimir" text="Descargar" maxWidth="Infinity" />
+						            <VBox fx:id="vboxOpcionesImprimir" spacing="5" visible="false" styleClass="submenu-vbox">
+						                <Button fx:id="btnExcel" text="Excel" onAction="#exportarAXLSM" styleClass="submenu-button" />
+						                <Button fx:id="btnPDF" text="PDF" onAction="#exportarClientesAPDF" styleClass="submenu-button" />
+						            </VBox>
+						        </VBox>
+						    </children>
+						</VBox>
                </children>
             </AnchorPane>
          </center>

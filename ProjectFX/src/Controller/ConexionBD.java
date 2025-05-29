@@ -18,10 +18,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Modelos.Cliente;
+import Modelos.Gastos;
 import Modelos.Pedido;
 import Modelos.Presupuesto;
 import Modelos.Producto;
 import Modelos.Servicio;
+import Modelos.Usuario;
 
 public class ConexionBD {
     private static final String URL = "jdbc:mysql://localhost:3306/programa";
@@ -72,7 +74,7 @@ public class ConexionBD {
                 System.out.println("Conexión a la base de datos establecida con éxito.");
             } else {
                 System.out.println("Error: No se pudo establecer la conexión.");
-                return;  // Si no hay conexión, no intentamos realizar la consulta.
+                return;
             }
 
             try (PreparedStatement ps = connection.prepareStatement(addClienteQuery)) {
@@ -104,7 +106,6 @@ public class ConexionBD {
                     iPersonaContacto3 + ", " + iTelefono3 + ", " + 
                     iEmail + ", " + iBanco + ", " + iObservaciones);
             
-            // JOptionPane para javaFX
             showAlert("Éxito", "¡Operación realizada con éxito!", AlertType.INFORMATION);
             
 
@@ -130,7 +131,6 @@ public class ConexionBD {
     @FXML
     private void agregarClienteProveedor(String tabla) {
         try {
-            // Obtener valores desde los campos de texto
             String nombre = txtNombre.getText();
             String apellidos = txtApellidos.getText();
             String razonSocial = txtRazonSocial.getText();
@@ -148,7 +148,6 @@ public class ConexionBD {
             String banco = txtBanco.getText();
             String observaciones = tarObservaciones.getText();
 
-            // Llamar al método addCliente
             addRegistroClienteProveedor(tabla, nombre, apellidos, razonSocial, dni, direccion, codigoPostal, provincia,
                        personaContacto1, telefono1, personaContacto2, telefono2,
                        personaContacto3, telefono3, email, banco, observaciones);
@@ -290,8 +289,8 @@ public class ConexionBD {
 
             while (rs.next()) {
                 Pedido pedido = new Pedido();
-                pedido.setNPedido(rs.getString("n_pedido"));       // PK
-                pedido.setFecha(rs.getString("fecha"));             // Puede ser String o convertir a java.sql.Date según convenga
+                pedido.setNPedido(rs.getString("n_pedido"));
+                pedido.setFecha(rs.getString("fecha"));
                 pedido.setIdCliente(rs.getInt("id_cliente"));
                 pedido.setRazonSocial(rs.getString("razon_social"));
                 pedido.setIva(rs.getDouble("iva"));
@@ -420,6 +419,146 @@ public class ConexionBD {
         } catch (SQLException e) {
             e.printStackTrace();
             showAlert("Error", "Error en la base de datos: " + e.getMessage(), Alert.AlertType.ERROR);
+            return false;
+        }
+    }
+    
+    
+    public List<Gastos> getAllGastos() {
+        List<Gastos> listaGastos = new ArrayList<>();
+
+        String query = "SELECT id_gasto, nombre, tipo FROM programa.gastos";
+
+        try (Connection conn = getConnection();
+             PreparedStatement ps = conn.prepareStatement(query);
+             ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+                Gastos gasto = new Gastos(
+                    rs.getInt("id_gasto"),
+                    rs.getString("nombre"),
+                    rs.getString("tipo")
+                );
+                listaGastos.add(gasto);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return listaGastos;
+    }
+
+    
+    
+    public boolean deleteGasto(int id) {
+        String query = "DELETE FROM programa.gastos WHERE id_gasto = ?";
+
+        try (Connection conn = getConnection();
+             PreparedStatement ps = conn.prepareStatement(query)) {
+
+            ps.setInt(1, id);
+            int filasAfectadas = ps.executeUpdate();
+            return filasAfectadas > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
+    
+    public List<Usuario> getAllUsuarios() {
+        List<Usuario> listaUsuarios = new ArrayList<>();
+
+        String sql = "SELECT id, nombre, usuario, password, " +
+                "presupuesto_nuevo, presupuesto_modificar, presupuesto_listar, " +
+                "pedidos_nuevo, pedidos_modificar, pedidos_listar, " +
+                "albaranes_nuevo, albaranes_modificar, albaranes_listar, " +
+                "facturas_nuevo, facturas_modificar, facturas_listar, " +
+                "clientes_nuevo, clientes_modificar, clientes_listar, " +
+                "proveedores_nuevo, proveedores_modificar, proveedores_listar, " +
+                "diario_emitidas, diario_recibidas, diario_gastos, " +
+                "resumen_emitidas, resumen_recibidas, resumen_gastos, " +
+                "otros_listado_gastos, otros_servicios, otros_productos, otros_usuarios, " +
+                "fecha_creacion " +
+                "FROM usuarios";
+
+        try (Connection conn = getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+
+            while (rs.next()) {
+                Usuario usuario = new Usuario();
+
+                usuario.setId(rs.getInt("id"));
+                usuario.setNombre(rs.getString("nombre"));
+                usuario.setUsuario(rs.getString("usuario"));
+                usuario.setPassword(rs.getString("password"));
+
+                // Set permisos
+                usuario.setPresupuestoNuevo(rs.getBoolean("presupuesto_nuevo"));
+                usuario.setPresupuestoModificar(rs.getBoolean("presupuesto_modificar"));
+                usuario.setPresupuestoListar(rs.getBoolean("presupuesto_listar"));
+
+                usuario.setPedidosNuevo(rs.getBoolean("pedidos_nuevo"));
+                usuario.setPedidosModificar(rs.getBoolean("pedidos_modificar"));
+                usuario.setPedidosListar(rs.getBoolean("pedidos_listar"));
+
+                usuario.setAlbaranesNuevo(rs.getBoolean("albaranes_nuevo"));
+                usuario.setAlbaranesModificar(rs.getBoolean("albaranes_modificar"));
+                usuario.setAlbaranesListar(rs.getBoolean("albaranes_listar"));
+
+                usuario.setFacturasNuevo(rs.getBoolean("facturas_nuevo"));
+                usuario.setFacturasModificar(rs.getBoolean("facturas_modificar"));
+                usuario.setFacturasListar(rs.getBoolean("facturas_listar"));
+
+                usuario.setClientesNuevo(rs.getBoolean("clientes_nuevo"));
+                usuario.setClientesModificar(rs.getBoolean("clientes_modificar"));
+                usuario.setClientesListar(rs.getBoolean("clientes_listar"));
+
+                usuario.setProveedoresNuevo(rs.getBoolean("proveedores_nuevo"));
+                usuario.setProveedoresModificar(rs.getBoolean("proveedores_modificar"));
+                usuario.setProveedoresListar(rs.getBoolean("proveedores_listar"));
+
+                usuario.setDiarioEmitidas(rs.getBoolean("diario_emitidas"));
+                usuario.setDiarioRecibidas(rs.getBoolean("diario_recibidas"));
+                usuario.setDiarioGastos(rs.getBoolean("diario_gastos"));
+
+                usuario.setResumenEmitidas(rs.getBoolean("resumen_emitidas"));
+                usuario.setResumenRecibidas(rs.getBoolean("resumen_recibidas"));
+                usuario.setResumenGastos(rs.getBoolean("resumen_gastos"));
+
+                usuario.setOtrosListadoGastos(rs.getBoolean("otros_listado_gastos"));
+                usuario.setOtrosServicios(rs.getBoolean("otros_servicios"));
+                usuario.setOtrosProductos(rs.getBoolean("otros_productos"));
+                usuario.setOtrosUsuarios(rs.getBoolean("otros_usuarios"));
+
+                usuario.setFechaCreacion(rs.getTimestamp("fecha_creacion"));
+
+                listaUsuarios.add(usuario);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return listaUsuarios;
+    }
+
+
+    public boolean deleteUsuario(int id) {
+        String query = "DELETE FROM usuarios WHERE id = ?";
+
+        try (Connection conn = getConnection();
+             PreparedStatement ps = conn.prepareStatement(query)) {
+
+            ps.setInt(1, id);
+            int filasAfectadas = ps.executeUpdate();
+            return filasAfectadas > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
             return false;
         }
     }

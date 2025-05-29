@@ -9,13 +9,30 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.VBox;
 
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import Modelos.Cliente;
+import Modelos.Presupuesto;
 import Controller.ConexionBD;
+
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Paragraph;
+
+import org.apache.poi.ss.usermodel.*;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+
+import java.io.File;
+import java.io.FileOutputStream;
+
 
 public class ListClientesController {
 
@@ -70,6 +87,9 @@ public class ListClientesController {
     
     @FXML
     private javafx.scene.control.Button btnEliminar;
+    
+    @FXML
+    private VBox vboxOpcionesImprimir;
 
     @FXML
     public void initialize() {
@@ -224,6 +244,138 @@ public class ListClientesController {
         TFPuedePedir.clear();
         TFRS.clear();
     }
+    
+    @FXML
+    private void toggleOpcionesImprimir() {
+        vboxOpcionesImprimir.setVisible(!vboxOpcionesImprimir.isVisible());
+    }
+    
+    
+    @FXML
+    private void exportarAXLSM() {
+        try (XSSFWorkbook workbook = new XSSFWorkbook()) {
+            Sheet hoja = workbook.createSheet("Clientes");
+
+            // Encabezado
+            Row encabezado = hoja.createRow(0);
+            encabezado.createCell(0).setCellValue("ID");
+            encabezado.createCell(1).setCellValue("Nombre");
+            encabezado.createCell(2).setCellValue("Apellidos");
+            encabezado.createCell(3).setCellValue("Razón Social");
+            encabezado.createCell(4).setCellValue("DNI");
+            encabezado.createCell(5).setCellValue("Dirección");
+            encabezado.createCell(6).setCellValue("C. Postal");
+            encabezado.createCell(7).setCellValue("Provincia");
+            encabezado.createCell(8).setCellValue("Contacto 1");
+            encabezado.createCell(9).setCellValue("Tel. 1");
+            encabezado.createCell(10).setCellValue("Contacto 2");
+            encabezado.createCell(11).setCellValue("Tel. 2");
+            encabezado.createCell(12).setCellValue("Contacto 3");
+            encabezado.createCell(13).setCellValue("Tel. 3");
+            encabezado.createCell(14).setCellValue("Email");
+            encabezado.createCell(15).setCellValue("Banco");
+            encabezado.createCell(16).setCellValue("Observaciones");
+            encabezado.createCell(17).setCellValue("Método de Pago");
+            encabezado.createCell(18).setCellValue("¿Puede Pedir?");
+
+            // Datos
+            int filaIndex = 1;
+            for (Cliente c : TableClientes.getItems()) {
+                Row fila = hoja.createRow(filaIndex++);
+                fila.createCell(0).setCellValue(c.getId());
+                fila.createCell(1).setCellValue(c.getNombre());
+                fila.createCell(2).setCellValue(c.getApellidos());
+                fila.createCell(3).setCellValue(c.getRazonSocial());
+                fila.createCell(4).setCellValue(c.getCifDni());
+                fila.createCell(5).setCellValue(c.getDireccion());
+                fila.createCell(6).setCellValue(c.getCodigoPostal());
+                fila.createCell(7).setCellValue(c.getProvincia());
+                fila.createCell(8).setCellValue(c.getPersonaContacto1());
+                fila.createCell(9).setCellValue(c.getTelefono1());
+                fila.createCell(10).setCellValue(c.getPersonaContacto2());
+                fila.createCell(11).setCellValue(c.getTelefono2());
+                fila.createCell(12).setCellValue(c.getPersonaContacto3());
+                fila.createCell(13).setCellValue(c.getTelefono3());
+                fila.createCell(14).setCellValue(c.getEmail());
+                fila.createCell(15).setCellValue(c.getCuentaBancaria());
+                fila.createCell(16).setCellValue(c.getObservaciones());
+                fila.createCell(17).setCellValue(c.getMetodoPago());
+                fila.createCell(18).setCellValue(c.getPuedePedir() ? "Sí" : "No");
+            }
+
+            // FileChooser para guardar archivo
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Guardar archivo Excel");
+            fileChooser.getExtensionFilters().add(
+                new FileChooser.ExtensionFilter("Archivo Excel (*.xlsx)", "*.xlsx")
+            );
+            fileChooser.setInitialFileName("clientes_exportados.xlsx");
+
+            Stage stage = (Stage) TableClientes.getScene().getWindow();
+            File file = fileChooser.showSaveDialog(stage);
+
+            if (file != null) {
+                try (FileOutputStream fileOut = new FileOutputStream(file)) {
+                    workbook.write(fileOut);
+                }
+                mostrarAlerta("Exportación exitosa", "Archivo exportado correctamente:\n" + file.getAbsolutePath(), Alert.AlertType.INFORMATION);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            mostrarAlerta("Error", "No se pudo exportar el archivo XLSX.", Alert.AlertType.ERROR);
+        }
+    }
+    
+    @FXML
+    private void exportarClientesAPDF() {
+        try {
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Guardar PDF");
+            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF (*.pdf)", "*.pdf"));
+            fileChooser.setInitialFileName("clientes_exportados.pdf");
+
+            Stage stage = (Stage) TableClientes.getScene().getWindow();
+            File file = fileChooser.showSaveDialog(stage);
+
+            if (file != null) {
+                PdfWriter writer = new PdfWriter(file.getAbsolutePath());
+                PdfDocument pdf = new PdfDocument(writer);
+                Document document = new Document(pdf);
+
+                document.add(new Paragraph("Lista de Clientes:"));
+                document.add(new Paragraph(" "));
+
+                for (Cliente c : clientesList) {
+                    String clienteInfo =
+                        "ID: " + c.getId() +
+                        " | Nombre: " + c.getNombre() + " " + c.getApellidos() +
+                        " | Razón Social: " + c.getRazonSocial() +
+                        " | CIF/DNI: " + c.getCifDni() +
+                        " | Dirección: " + c.getDireccion() + ", " + c.getCodigoPostal() + " " + c.getPoblacion() +
+                        " | Provincia: " + c.getProvincia() +
+                        " | Email: " + c.getEmail() +
+                        " | Teléfonos: " + c.getTelefono1();
+
+                    if (!c.getTelefono2().isEmpty()) clienteInfo += ", " + c.getTelefono2();
+                    if (!c.getTelefono3().isEmpty()) clienteInfo += ", " + c.getTelefono3();
+
+                    clienteInfo += " | Puede pedir: " + (c.getPuedePedir() ? "Sí" : "No");
+
+                    document.add(new Paragraph(clienteInfo));
+                    document.add(new Paragraph(" "));
+                }
+
+                document.close();
+                mostrarAlerta("Exportación exitosa", "Archivo PDF exportado correctamente:\n" + file.getAbsolutePath(), Alert.AlertType.INFORMATION);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            mostrarAlerta("Error", "No se pudo exportar el archivo PDF.", Alert.AlertType.ERROR);
+        }
+    }
+
+
   
     
     private void mostrarAlerta(String titulo, String mensaje, Alert.AlertType tipo) {

@@ -49,7 +49,7 @@
 }
 
 /* Botones principales */
-#btnEliminar, #btnImprimir, #btnLimpiar {
+#btnEliminar, #btnImprimir, #btnLimpiar, #btnPDF, #btnExcel {
     -fx-background-color: #000625;
     -fx-text-fill: white;
     -fx-font-size: 28px;
@@ -63,7 +63,7 @@
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0, 0, 1);
 }
 
-#btnEliminar:hover, #btnImprimir:hover, #btnLimpiar:hover {
+#btnEliminar:hover, #btnImprimir:hover, #btnLimpiar:hover, #btnPDF:hover, #btnExcel:hover  {
     -fx-background-color: #1a1a3a;
     -fx-cursor: hand;
 }

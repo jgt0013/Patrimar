@@ -32,7 +32,6 @@
                         <VBox fx:id="vboxPresupuesto" spacing="5" styleClass="submenu-vbox" visible="false">
                            <Button styleClass="submenu-button" text="Nuevo Presupuesto" />
                            <Button styleClass="submenu-button" text="Modificar Presupuesto" />
-                           <Button styleClass="submenu-button" text="Borrar Presupuesto" />
                            <Button onAction="#abrirListarPresupuestos" styleClass="submenu-button" text="Listar Presupuestos" />
                         </VBox>
                      </VBox>
@@ -42,7 +41,6 @@
                         <VBox fx:id="vboxPedidos" spacing="5" styleClass="submenu-vbox" visible="false">
                            <Button styleClass="submenu-button" text="Nuevo Pedido" />
                            <Button styleClass="submenu-button" text="Modificar Pedido" />
-                           <Button styleClass="submenu-button" text="Borrar Pedido" />
                            <Button onAction="#abrirListarPedidos" styleClass="submenu-button" text="Listar Pedidos" />
                         </VBox>
                      </VBox>
@@ -52,7 +50,6 @@
                         <VBox fx:id="vboxAlbaranes" spacing="5" styleClass="submenu-vbox" visible="false">
                            <Button styleClass="submenu-button" text="Nuevo Albarán" />
                            <Button styleClass="submenu-button" text="Modificar Albarán" />
-                           <Button styleClass="submenu-button" text="Borrar Albarán" />
                            <Button styleClass="submenu-button" text="Listar Albaranes" />
                         </VBox>
                      </VBox>
@@ -62,7 +59,6 @@
                         <VBox fx:id="vboxFacturas" spacing="5" styleClass="submenu-vbox" visible="false">
                            <Button styleClass="submenu-button" text="Nueva Factura" />
                            <Button styleClass="submenu-button" text="Modificar Factura" />
-                           <Button styleClass="submenu-button" text="Borrar Factura" />
                            <Button styleClass="submenu-button" text="Listar Facturas" />
                         </VBox>
                      </VBox>
@@ -75,7 +71,6 @@
                         <VBox fx:id="vboxClientes" spacing="5" styleClass="submenu-vbox" visible="false">
                            <Button onAction="#abrirNuevoCliente" styleClass="submenu-button" text="Nuevo Cliente" />
                            <Button onAction="#abrirModificarCliente" styleClass="submenu-button" text="Modificar Cliente" />
-                           <Button styleClass="submenu-button" text="Borrar Cliente" />
                            <Button onAction="#abrirListarClientes" styleClass="submenu-button" text="Listar Clientes" />
                         </VBox>
                      </VBox>
@@ -85,7 +80,6 @@
                         <VBox fx:id="vboxProveedores" spacing="5" styleClass="submenu-vbox" visible="false">
                            <Button onAction="#abrirNuevoProveedor" styleClass="submenu-button" text="Nuevo Proveedor" />
                            <Button styleClass="submenu-button" text="Modificar Proveedor" />
-                           <Button styleClass="submenu-button" text="Borrar Proveedor" />
                            <Button styleClass="submenu-button" text="Listar Proveedores" />
                         </VBox>
                      </VBox>
@@ -114,7 +108,7 @@
                <VBox alignment="CENTER" spacing="10" styleClass="others-container">
                   <Button fx:id="btnOtros" onAction="#toggleButtons" styleClass="main-button" text="Otros" />
                   <VBox fx:id="vboxOtros" spacing="5" styleClass="submenu-vbox" visible="false">
-                     <Button styleClass="submenu-button" text="Listado Gastos" />
+                     <Button styleClass="submenu-button" text="Listado Gastos" onAction="#AbrirGastos"/>
                      <Button styleClass="submenu-button" text="Servicios" onAction="#AbrirServicio"/>
                      <Button styleClass="submenu-button" text="Productos" onAction="#AbrirProducto"/>
                      <Button onAction="#abrirUsuarios" styleClass="submenu-button" text="Usuarios" />

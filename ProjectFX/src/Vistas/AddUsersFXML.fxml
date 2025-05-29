@@ -12,6 +12,8 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.PasswordField?>
+
 
 <VBox VBox.vgrow="ALWAYS" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.NewUserController">
    <children>
@@ -44,7 +46,7 @@
                      <TextField fx:id="TFNombre" prefHeight="25.0" prefWidth="165.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
 
                      <Label text="Contraseña:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                     <TextField fx:id="TFPassword" prefHeight="25.0" prefWidth="144.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                     <PasswordField fx:id="TFPassword" prefHeight="25.0" prefWidth="144.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
                      <Label text="Usuario:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
                      <TextField fx:id="TFUser" GridPane.columnIndex="1" GridPane.rowIndex="2" />
@@ -56,8 +58,8 @@
                <!-- VBox de botones en la esquina inferior derecha -->
                <VBox prefHeight="345.0" prefWidth="271.0" spacing="70.0" AnchorPane.bottomAnchor="219.0" AnchorPane.rightAnchor="44.0">
                   <children>
-                     <Button fx:id="btnAdd" mnemonicParsing="false" text="Añadir"/>
-                     <Button fx:id="btnModificar" text="Modificar" onAction="#abrirModifUser"/>
+                     <Button fx:id="btnAdd" mnemonicParsing="false" text="Añadir" onAction="#AddUsuario"/>
+                     <Button fx:id="btnModificar" text="Modificar" onAction="#abrirModifUser" />
                      <Button fx:id="btnConsultar" text="Consultar" onAction="#abrirConsultarUser"/>
                   </children>
                </VBox>
@@ -74,7 +76,6 @@
                               <VBox fx:id="vboxPresupuesto" managed="false" spacing="5" styleClass="submenu-vbox" visible="false">
                                  <CheckBox styleClass="submenu-checkbox" text="Nuevo Presupuesto" />
                                  <CheckBox styleClass="submenu-checkbox" text="Modificar Presupuesto" />
-                                 <CheckBox styleClass="submenu-checkbox" text="Borrar Presupuesto" />
                                  <CheckBox styleClass="submenu-checkbox" text="Listar Presupuesto" />
                               </VBox>
                            </VBox>
@@ -85,7 +86,6 @@
                               <VBox fx:id="vboxPedidos" managed="false" spacing="5" styleClass="submenu-vbox" visible="false">
                                  <CheckBox styleClass="submenu-checkbox" text="Nuevo Pedido" />
                                  <CheckBox styleClass="submenu-checkbox" text="Modificar Pedido" />
-                                 <CheckBox styleClass="submenu-checkbox" text="Borrar Pedido" />
                                  <CheckBox styleClass="submenu-checkbox" text="Listar Pedidos" />
                               </VBox>
                            </VBox>
@@ -96,7 +96,6 @@
                               <VBox fx:id="vboxAlbaranes" managed="false" spacing="5" styleClass="submenu-vbox" visible="false">
                                  <CheckBox styleClass="submenu-checkbox" text="Nuevo Albarán" />
                                  <CheckBox styleClass="submenu-checkbox" text="Modificar Albarán" />
-                                 <CheckBox styleClass="submenu-checkbox" text="Borrar Albarán" />
                                  <CheckBox styleClass="submenu-checkbox" text="Listar Albaranes" />
                               </VBox>
                            </VBox>
@@ -107,7 +106,6 @@
                               <VBox fx:id="vboxFacturas" managed="false" spacing="5" styleClass="submenu-vbox" visible="false">
                                  <CheckBox styleClass="submenu-checkbox" text="Nueva Factura" />
                                  <CheckBox styleClass="submenu-checkbox" text="Modificar Factura" />
-                                 <CheckBox styleClass="submenu-checkbox" text="Borrar Factura" />
                                  <CheckBox styleClass="submenu-checkbox" text="Listar Facturas" />
                               </VBox>
                            </VBox>
@@ -117,7 +115,6 @@
                               <VBox fx:id="vboxClientes" managed="false" spacing="5" styleClass="submenu-vbox" visible="false">
                                  <CheckBox styleClass="submenu-checkbox" text="Nuevo Cliente" />
                                  <CheckBox styleClass="submenu-checkbox" text="Modificar Cliente" />
-                                 <CheckBox styleClass="submenu-checkbox" text="Borrar Cliente" />
                                  <CheckBox styleClass="submenu-checkbox" text="Listar Clientes" />
                               </VBox>
                            </VBox>
@@ -132,7 +129,6 @@
                               <VBox fx:id="vboxProveedores" managed="false" spacing="5" styleClass="submenu-vbox" visible="false">
                                  <CheckBox styleClass="submenu-checkbox" text="Nuevo Proveedor" />
                                  <CheckBox styleClass="submenu-checkbox" text="Modificar Proveedor" />
-                                 <CheckBox styleClass="submenu-checkbox" text="Borrar Proveedor" />
                                  <CheckBox styleClass="submenu-checkbox" text="Listar Proveedores" />
                               </VBox>
                            </VBox>

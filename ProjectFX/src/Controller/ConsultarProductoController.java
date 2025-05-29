@@ -7,12 +7,28 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import Modelos.Producto;
+import Modelos.Servicio;
 import Controller.ConexionBD;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.List;
 import java.util.function.Predicate;
+
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Paragraph;
 
 public class ConsultarProductoController {
 
@@ -32,6 +48,9 @@ public class ConsultarProductoController {
 
     private ObservableList<Producto> productosList = FXCollections.observableArrayList();
     private ObservableList<Producto> productosFiltrados = FXCollections.observableArrayList();
+    
+    @FXML
+    private VBox vboxOpcionesImprimir;
 
     @FXML
     private void initialize() {
@@ -124,6 +143,99 @@ public class ConsultarProductoController {
         TFServicio.clear();
         TFPrecio.clear();
     }
+    
+    
+    @FXML
+    private void toggleOpcionesImprimir() {
+        vboxOpcionesImprimir.setVisible(!vboxOpcionesImprimir.isVisible());
+    }
+    
+    
+    @FXML
+    private void exportarAXLSM() {
+        try (XSSFWorkbook workbook = new XSSFWorkbook()) {
+            Sheet hoja = workbook.createSheet("Productos");
+
+            // Encabezado
+            Row encabezado = hoja.createRow(0);
+            encabezado.createCell(0).setCellValue("ID");
+            encabezado.createCell(1).setCellValue("Código");
+            encabezado.createCell(2).setCellValue("Producto");
+            encabezado.createCell(3).setCellValue("Precio");
+
+            // Datos de la tabla
+            int filaIndex = 1;
+            for (Producto p : TableProductos.getItems()) {
+                Row fila = hoja.createRow(filaIndex++);
+                fila.createCell(0).setCellValue(p.getIdProducto());
+                fila.createCell(1).setCellValue(p.getCodigoProducto());
+                fila.createCell(2).setCellValue(p.getProducto());
+                fila.createCell(3).setCellValue(p.getImporte());
+            }
+
+            // Crear el FileChooser
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Guardar archivo Excel");
+            fileChooser.getExtensionFilters().add(
+                new FileChooser.ExtensionFilter("Archivo Excel (*.xlsx)", "*.xlsx")
+            );
+            fileChooser.setInitialFileName("productos_exportados.xlsx");
+
+            // Obtener ventana actual
+            Stage stage = (Stage) TableProductos.getScene().getWindow();
+            File file = fileChooser.showSaveDialog(stage);
+
+            if (file != null) {
+                try (FileOutputStream fileOut = new FileOutputStream(file)) {
+                    workbook.write(fileOut);
+                }
+                mostrarAlerta("Éxito", "Archivo exportado correctamente:\n" + file.getAbsolutePath(), Alert.AlertType.INFORMATION);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            mostrarAlerta("Error", "No se pudo exportar el archivo XLSX.", Alert.AlertType.ERROR);
+        }
+    }
+    
+    
+    @FXML
+    private void exportarProductosAPDF() {
+        try {
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Guardar PDF");
+            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF (*.pdf)", "*.pdf"));
+            fileChooser.setInitialFileName("productos_exportados.pdf");
+
+            Stage stage = (Stage) TableProductos.getScene().getWindow();
+            File file = fileChooser.showSaveDialog(stage);
+
+            if (file != null) {
+                PdfWriter writer = new PdfWriter(file.getAbsolutePath());
+                PdfDocument pdf = new PdfDocument(writer);
+                Document document = new Document(pdf);
+
+                document.add(new Paragraph("Lista de Productos:"));
+
+                for (Producto p : TableProductos.getItems()) {
+                    document.add(new Paragraph(
+                        "ID: " + p.getIdProducto() +
+                        " | Código: " + p.getCodigoProducto() +
+                        " | Producto: " + p.getProducto() +
+                        " | Importe: " + p.getImporte()
+                    ));
+                }
+
+                document.close();
+                mostrarAlerta("Exportación exitosa", "Archivo PDF exportado correctamente:\n" + file.getAbsolutePath(), Alert.AlertType.INFORMATION);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            mostrarAlerta("Error", "No se pudo exportar el archivo PDF.", Alert.AlertType.ERROR);
+        }
+    }
+
+
 
     private void mostrarAlerta(String titulo, String contenido, Alert.AlertType tipo) {
         Alert alerta = new Alert(tipo);

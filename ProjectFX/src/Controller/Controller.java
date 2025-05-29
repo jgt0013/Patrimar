@@ -70,6 +70,24 @@ public class Controller {
             e.printStackTrace();
         }
     }
+    
+    @FXML
+    private void AbrirGastos(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/AddGastosFXML.fxml"));
+            Scene scene = new Scene(loader.load(), 1920, 1080);
+
+            Stage stage = new Stage();
+            stage.setTitle("Gestión de Gastos");
+            stage.setScene(scene);
+            stage.show();
+            stage.setMaximized(true);
+
+            scene.getStylesheets().add(getClass().getResource("/Styles/AddGastosCSS.css").toExternalForm());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     @FXML
     private void abrirNuevoCliente(ActionEvent event) {
@@ -147,28 +165,23 @@ public class Controller {
     @FXML
     private void abrirListarPedidos(ActionEvent event) {
         try {
-            // Carga el archivo FXML correspondiente
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/ListPedidosFXML.fxml"));
             
             if (loader.getLocation() == null) {
                 throw new IOException("No se pudo encontrar el archivo FXML.");
             }
 
-            // Crea una nueva escena con el archivo cargado
             Scene scene = new Scene(loader.load(), 1920, 1080);
-            
-            // Crea una nueva ventana (Stage)
+
             Stage stage = new Stage();
             stage.setTitle("Gestión de Pedidos");
             stage.setScene(scene);
             stage.show();
-            stage.setMaximized(true); // Maximiza la ventana
+            stage.setMaximized(true);
 
-            // Asegúrate de que la ruta del CSS sea correcta
             scene.getStylesheets().add(getClass().getResource("/Styles/ListPedidos.css").toExternalForm());
 
         } catch (IOException e) {
-            // En caso de error, imprime el error en consola
             e.printStackTrace();  
             System.out.println("Error al cargar la vista: " + e.getMessage());
         }
