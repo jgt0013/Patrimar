@@ -226,7 +226,7 @@ public class ModifUserController extends Application {
         }
     }
 
-
+    @FXML
     private void limpiarCampos() {
         TFBuscar.clear();
         TFNombre.clear();

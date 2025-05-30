@@ -17,7 +17,7 @@
 }
 
 /* Tabla de productos */
-#TableProductos {
+#TableGastos {
     -fx-background-color: #1E1E2E;
     -fx-border-color: #000625;
     -fx-border-radius: 10px;
@@ -27,20 +27,20 @@
 }
 
 /* Fondo de encabezados */
-#TableProductos .column-header-background {
+#TableGastos .column-header-background {
     -fx-background-color: #000625;
     -fx-background-radius: 10px 10px 0px 0px;
 }
 
 /* Estilos de los encabezados y columnas */
-#TableProductos .column-header, #TableProductos .table-column {
+#TableGastos .column-header, #TableGastos .table-column {
     -fx-text-fill: white;
     -fx-font-weight: bold;
     -fx-font-size: 16px;
 }
 
 /* Estilo de las filas */
-#TableProductos .table-row-cell {
+#TableGastos .table-row-cell {
     -fx-background-color: #2D2D3A;
     -fx-border-color: transparent;
 }
@@ -50,7 +50,7 @@
     -fx-text-fill: white;
 }
 
-#TableProductos .table-cell {
+#TableGastos .table-cell {
     -fx-text-fill: white;
     -fx-font-size: 16px;
 }

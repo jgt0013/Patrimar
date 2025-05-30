@@ -57,7 +57,7 @@
 
 
 /* Botones principales */
-#btnEliminar, #btnImprimir, #btnLimpiar {
+#btnEliminar, #btnImprimir, #btnLimpiar, #btnExcel, #btnPDF {
     -fx-background-color: #000625;
     -fx-text-fill: white;
     -fx-font-size: 20px;
@@ -70,7 +70,7 @@
     -fx-margin: 10px;
 }
 
-#btnEliminar:hover, #btnImprimir:hover, #btnLimpiar:hover {
+#btnEliminar:hover, #btnImprimir:hover, #btnLimpiar:hover, #btnExcel:hover, #btnPDF:hover {
     -fx-background-color: #1a1a3a;
     -fx-cursor: hand;
 }

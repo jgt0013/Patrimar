@@ -113,22 +113,21 @@
 					</TableView>
 
 
-                  <GridPane layoutX="1579.0" layoutY="402.0" prefHeight="418.0" prefWidth="271.0" vgap="10" AnchorPane.bottomAnchor="189.0" AnchorPane.rightAnchor="16.0">
-                     <children>
-                        <Button fx:id="btnEliminar" text="Eliminar" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-                        <Button fx:id="btnImprimir" text="Imprimir" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-                        <Button fx:id="btnLimpiar" mnemonicParsing="false" onAction="#limpiarCampos" text="Limpiar" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                     </children>
-                     <columnConstraints>
-                        <ColumnConstraints />
-                     </columnConstraints>
-                     <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" />
-                        <RowConstraints />
-                        <RowConstraints />
-                        <RowConstraints />
-                     </rowConstraints>
-                  </GridPane>
+                  <VBox layoutX="1579.0" layoutY="402.0" spacing="10" AnchorPane.bottomAnchor="189.0" AnchorPane.rightAnchor="16.0">
+				    <children>
+				        <Button fx:id="btnLimpiar" text="Limpiar" onAction="#limpiarCampos" maxWidth="Infinity" />
+				        <Button fx:id="btnEliminar" text="Eliminar" onAction="#eliminarUsuario" maxWidth="Infinity" />
+				        
+				        <!-- Botón desplegable de Imprimir -->
+				        <VBox alignment="CENTER" spacing="10">
+				            <Button fx:id="btnImprimir" onAction="#toggleOpcionesImprimir" text="Descargar" maxWidth="Infinity" />
+				            <VBox fx:id="vboxOpcionesImprimir" spacing="5" visible="false" styleClass="submenu-vbox">
+				                <Button fx:id="btnExcel" text="Excel" onAction="#exportarAXLSX" styleClass="submenu-button" />
+				                <Button fx:id="btnPDF" text="PDF" onAction="#exportarAPDF" styleClass="submenu-button" />
+				            </VBox>
+			        </VBox>
+					    </children>
+					</VBox>
                </children>
             </AnchorPane>
          </center>

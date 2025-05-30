@@ -171,6 +171,42 @@ public class ConsultarUsersController {
         TFUsers.clear();
         TableUsuarios.getSelectionModel().clearSelection();
     }
+    
+    
+    @FXML
+    private void eliminarUsuario() {
+        Usuario usuarioSeleccionado = TableUsuarios.getSelectionModel().getSelectedItem();
+
+        if (usuarioSeleccionado != null) {
+            Alert confirmacion = new Alert(Alert.AlertType.CONFIRMATION);
+            confirmacion.setTitle("Confirmación");
+            confirmacion.setHeaderText("Eliminar Usuario");
+            confirmacion.setContentText("¿Estás seguro de que quieres eliminar al usuario: " + usuarioSeleccionado.getUsuario() + "?");
+
+            confirmacion.showAndWait().ifPresent(respuesta -> {
+                if (respuesta == ButtonType.OK) {
+                    ConexionBD conexion = new ConexionBD();
+                    boolean eliminado = conexion.deleteUsuario(usuarioSeleccionado.getId());
+
+                    if (eliminado) {
+                        usuariosList.remove(usuarioSeleccionado);
+                        usuariosFiltrados.setAll(usuariosList);
+                        TableUsuarios.refresh();
+                    } else {
+                        mostrarAlerta("Error", "No se pudo eliminar el usuario de la base de datos.", Alert.AlertType.ERROR);
+                    }
+                }
+            });
+        } else {
+            mostrarAlerta("Error", "Selecciona un usuario para eliminar.", Alert.AlertType.WARNING);
+        }
+    }
+
+    
+    @FXML    
+    private void toggleOpcionesImprimir() {
+        vboxOpcionesImprimir.setVisible(!vboxOpcionesImprimir.isVisible());
+    }
 
     @FXML
     private void exportarAXLSX() {
